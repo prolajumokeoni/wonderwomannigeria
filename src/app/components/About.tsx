@@ -165,10 +165,10 @@ const NGOWebsite = () => {
       </section>
       <section id="" className=" bg-gray-50">
         <div className=" ">
-          <div className="flex w-fullmx-auto ">
-              <img className="  w-1/2   object-cover object-top  h-[600px]" src="images/about/girl.webp" alt="" />
+          <div className="flex w-full mx-auto flex-col lg:flex-row">
+              <img className="  lg:w-1/2   object-cover lg:object-top h-[300px]  lg:h-[600px]" src="images/about/girl.webp" alt="" />
 
-            <div className="flex items-center flex-col justify-center w-1/2 gap-4 bg-white">
+            <div className="flex items-center flex-col justify-center lg:w-1/2 gap-4 bg-white p-6 lg:p-0">
               <div className="w-16 h-16  bg-[#fcf0f0]  rounded-full flex items-center justify-center mx-auto mb-4">
               <Target className="w-8 h-8  text-red-500" />
 
@@ -182,9 +182,9 @@ const NGOWebsite = () => {
             </div>
           </div>
 
-          <div className="flex w-full mx-auto ">
+          <div className="flex w-full mx-auto flex-col lg:flex-row ">
 
-            <div className="flex items-center flex-col justify-center w-1/2 gap-4 bg-white">
+            <div className="order-2 lg:order-2   flex items-center flex-col justify-center lg:w-1/2 gap-4 bg-white p-6 lg:p-0">
               <div className="w-16 h-16 rounded-full  bg-[#d7f3da]  flex items-center justify-center mx-auto mb-4">
               <Eye className="w-8 h-8 text-[#3db94c]" />
               </div>
@@ -196,7 +196,7 @@ const NGOWebsite = () => {
           
               </p>
             </div>
-            <img className="  w-1/2 object-cover   object-top h-[600px]" src="images/about/schoolgirls.webp" alt="" />
+            <img className="lg:w-1/2 object-cover lg:object-top h-[300px] order-1 lg:order-2  lg:h-[600px]" src="images/about/schoolgirls.webp" alt="" />
           </div>
         </div>
 
@@ -204,7 +204,7 @@ const NGOWebsite = () => {
 
    <section ref={sectionRef} className="py-20 ">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="grid   md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
               <div key={index} className="text-center p-6 bg-gray-50 rounded-lg">
                 <div className="flex justify-center mb-2 text-red-500">{stat.icon}</div>
@@ -257,11 +257,11 @@ const NGOWebsite = () => {
             </div>
           </div>
 
-          <div className="text-center mt-12">
-            <button className="bg-[#3db94c] text-white px-8 py-3 rounded-lg font-medium hover:bg-red-600 transition-colors mr-4">
+          <div className="text-center mt-12 flex flex-col gap-4 justify-center lg:flex-row">
+            <button className="bg-[#3db94c] border-2 border-[#3db94c] text-white px-8 py-3 rounded-lg font-medium hover:bg-red-600 transition-colors">
               Donate Now
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 transition-colors">
+            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 ">
               Volunteer
             </button>
           </div>

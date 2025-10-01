@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <div className="bg-gray-800 text-gray-300 py-8 ">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-row items-center justify-between space-y-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between space-y-4">
           {/* Social Icons */}
           <div className="flex justify-center space-x-4 py-3">
             <a
