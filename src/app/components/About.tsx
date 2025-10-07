@@ -23,19 +23,42 @@ import {
   Eye,
 } from "lucide-react";
 
-const NGOWebsite = () => {
- 
+const About = () => {
   const stats = [
-    { number: 200, suffix: "+", label: "Lives Impacted", icon: <Heart className="w-6 h-6" /> },
-    { number: 36, suffix: "+", label: "Communities Served", icon: <Globe className="w-6 h-6" /> },
-    { number: 110, suffix: "+", label: "Active Volunteers", icon: <Users className="w-6 h-6" /> },
-    { number: 7, suffix: "", label: "Years of Service", icon: <Award className="w-6 h-6" /> },
+    {
+      number: 1000,
+      suffix: "+",
+      label: "Lives Impacted",
+      icon: <Heart className="w-6 h-6" />,
+    },
+    {
+      number: 36,
+      suffix: "+",
+      label: "Communities Served",
+      icon: <Globe className="w-6 h-6" />,
+    },
+    {
+      number: 110,
+      suffix: "+",
+      label: "Active Volunteers",
+      icon: <Users className="w-6 h-6" />,
+    },
+    {
+      number: 7,
+      suffix: "",
+      label: "Years of Service",
+      icon: <Award className="w-6 h-6" />,
+    },
   ];
-  
- 
 
- 
   const programs = [
+    {
+      icon: <Droplet className="w-8 h-8" />,
+      title: "Plastics for Pads Project ",
+      description:
+        "Safeguarding children's rights and providing safe spaces for vulnerable youth.",
+      color: "bg-red-100 text-red-600",
+    },
     {
       icon: <HandHelping className="w-8 h-8" />,
       title: "Random Acts of Kindness Week & Outreaches",
@@ -69,17 +92,10 @@ const NGOWebsite = () => {
       title: "Child, Not Bride Campaign",
       description:
         "Emergency response and rebuilding efforts for communities affected by natural disasters.",
-      color: "bg-red-100 text-red-600",
-    },
-    {
-      icon: <Droplet className="w-8 h-8" />,
-      title: "Plastics for Pads Project ",
-      description:
-        "Safeguarding children's rights and providing safe spaces for vulnerable youth.",
       color: "bg-purple-100 text-purple-600",
     },
   ];
- 
+
   const [visible, setVisible] = useState(false);
   const [counts, setCounts] = useState(stats.map(() => 0));
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -111,21 +127,15 @@ const NGOWebsite = () => {
 
     function update(now: number) {
       const progress = Math.min((now - start) / duration, 1);
-      setCounts(
-        stats.map((stat) => Math.floor(stat.number * progress))
-      );
+      setCounts(stats.map((stat) => Math.floor(stat.number * progress)));
       if (progress < 1) requestAnimationFrame(update);
     }
 
     requestAnimationFrame(update);
   }, [visible]);
 
- 
   return (
     <div className="min-h-screen bg-white">
-  
-   
-
       {/* Programs Section */}
       <section id="programs" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -140,21 +150,25 @@ const NGOWebsite = () => {
               advocacy, and child protection.
             </p> */}
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {programs.map((program, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col"
               >
                 <div
                   className={`w-16 h-16 ${program.color} rounded-lg flex items-center justify-center mb-4`}
                 >
                   {program.icon}
                 </div>
+
                 <h3 className="text-xl font-semibold mb-3">{program.title}</h3>
-                <p className="text-gray-600 mb-4">{program.description}</p>
-                <button className="text-red-500 font-medium hover:text-red-600 flex items-center space-x-1">
+                <p className="text-gray-600 mb-4 flex-grow">
+                  {program.description}
+                </p>
+
+                {/* Align Learn More to the bottom */}
+                <button className="mt-auto text-red-500 font-medium hover:text-red-600 flex items-center space-x-1">
                   <span>Learn More</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -166,50 +180,61 @@ const NGOWebsite = () => {
       <section id="" className=" bg-gray-50">
         <div className=" ">
           <div className="flex w-full mx-auto flex-col lg:flex-row">
-              <img className="  lg:w-1/2   object-cover lg:object-top h-[300px]  lg:h-[600px]" src="images/about/girl.webp" alt="" />
+            <img
+              className="  lg:w-1/2   object-cover lg:object-top h-[300px]  lg:h-[600px]"
+              src="images/about/girl.webp"
+              alt=""
+            />
 
             <div className="flex items-center flex-col justify-center lg:w-1/2 gap-4 bg-white p-6 lg:p-0">
               <div className="w-16 h-16  bg-[#fcf0f0]  rounded-full flex items-center justify-center mx-auto mb-4">
-              <Target className="w-8 h-8  text-red-500" />
-
+                <Target className="w-8 h-8  text-red-500" />
               </div>
               <h3 className="text-3xl font-semibold mb-2">Our Mission</h3>
               <p className="text-gray-600 max-w-md mx-auto text-center text-xl">
-              Our mission is to improve the lives of women and girls by addressing systemic barriers to dignity, education, and
-                inclusion through advocacy, innovative solutions, and community-driven initiatives.  
-          
+                Our mission is to improve the lives of women and girls by
+                addressing systemic barriers to dignity, education, and
+                inclusion through advocacy, innovative solutions, and
+                community-driven initiatives.
               </p>
             </div>
           </div>
 
           <div className="flex w-full mx-auto flex-col lg:flex-row ">
-
             <div className="order-2 lg:order-2   flex items-center flex-col justify-center lg:w-1/2 gap-4 bg-white p-6 lg:p-0">
               <div className="w-16 h-16 rounded-full  bg-[#d7f3da]  flex items-center justify-center mx-auto mb-4">
-              <Eye className="w-8 h-8 text-[#3db94c]" />
+                <Eye className="w-8 h-8 text-[#3db94c]" />
               </div>
               <h3 className="text-3xl font-semibold mb-2">Our Vision</h3>
               <p className="text-gray-600 max-w-md mx-auto text-center text-xl">
-              To create a Nigeria where gender equality, environmental
+                To create a Nigeria where gender equality, environmental
                 sustainability, and community resilience are an upheld standard
-                and menstrual dignity is a right for every woman and girl.{" "} 
-          
+                and menstrual dignity is a right for every woman and girl.{" "}
               </p>
             </div>
-            <img className="lg:w-1/2 object-cover lg:object-top h-[300px] order-1 lg:order-2  lg:h-[600px]" src="images/about/schoolgirls.webp" alt="" />
+            <img
+              className="lg:w-1/2 object-cover lg:object-top h-[300px] order-1 lg:order-2  lg:h-[600px]"
+              src="images/about/schoolgirls.webp"
+              alt=""
+            />
           </div>
         </div>
-
       </section>
 
-   <section ref={sectionRef} className="py-20 ">
+      <section ref={sectionRef} className="py-20 ">
         <div className="container mx-auto px-4">
           <div className="grid   md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center p-6 bg-gray-50 rounded-lg">
-                <div className="flex justify-center mb-2 text-red-500">{stat.icon}</div>
+              <div
+                key={index}
+                className="text-center p-6 bg-gray-50 rounded-lg"
+              >
+                <div className="flex justify-center mb-2 text-red-500">
+                  {stat.icon}
+                </div>
                 <div className="text-3xl font-bold text-gray-800 mb-1">
-                  {counts[index]}{stat.suffix}
+                  {counts[index]}
+                  {stat.suffix}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
               </div>
@@ -217,58 +242,8 @@ const NGOWebsite = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-black text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Get Involved</h2>
-            <div className="w-24 h-1 bg-[#3db94c] mx-auto mb-6"></div>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Join us in our mission to create lasting positive change. Every
-              contribution makes a difference.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Email Us</h3>
-              <p className="text-gray-300 mb-2">info@wonderwomannigeria.org</p>
-              <p className="text-gray-300">volunteer@wonderwomannigeria.org</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Phone className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-              <p className="text-gray-300 mb-2">+2348102657973</p>
-              {/* <p className="text-gray-300">Emergency: +1 (555) 987-6543</p> */}
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Abuja Nigeria</h3>
-              {/* <p className="text-gray-300 mb-2">123 Hope Street</p> */}
-              {/* <p className="text-gray-300">Compassion City, CC 12345</p> */}
-            </div>
-          </div>
-
-          <div className="text-center mt-12 flex flex-col gap-4 justify-center lg:flex-row">
-            <button className="bg-[#3db94c] border-2 border-[#3db94c] text-white px-8 py-3 rounded-lg font-medium hover:bg-red-600 transition-colors">
-              Donate Now
-            </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-gray-900 ">
-              Volunteer
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
 
-export default NGOWebsite;
+export default About;

@@ -5,14 +5,15 @@ import Image from "next/image";
 
 export default function TeamSection() {
   const teamMembers = [
-    { name: "Sarah Johnson", position: "Executive Director", image: "/images/team/elina.jpeg" },
-    { name: "Amara Okafor", position: "Program Manager", image: "/images/team/anne.jpeg" },
-    { name: "Fatima Abdullah", position: "Community Outreach Lead", image: "/images/team/yango.jpeg" },
-    { name: "Chioma Nwosu", position: "Finance Director", image: "/images/team/hassan.jpeg" },
-    { name: "Grace Adeyemi", position: "Volunteer Coordinator", image: "/images/team/tobi.jpeg" },
-    { name: "Blessing Okeke", position: "Communications Manager", image: "/images/team/jumoke.jpg" },
+    { name: "Ms. Elina E.", position: "President / Founder", image: "/images/team/elina.jpeg" },
+    { name: "Ms. Anne Dirkling", position: "Vice President", image: "/images/team/anne.jpeg" },
+    { name: "Mrs.Yango Sor", position: " Secretary and Gender Expert", image: "/images/team/yango.jpeg" },
+    { name: "Mr. Hassan Sufyan Abdullahi", position: "Finance / Project Manager ", image: "/images/team/hassan.jpeg" },
+    { name: "Ms. Oluwatobi Precious Odunubi", position: "PR/ Media Manager", image: "/images/team/tobi.jpeg" },
+    { name: "Ms. Oni Olajumoke", position: "IT Volunteer Manager", image: "/images/team/jumoke.jpg" },
   ];
 
+ 
   return (
     <section className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -42,10 +43,10 @@ export default function TeamSection() {
 
                 {/* Text bottom-right */}
                 <div className="absolute bottom-0 right-0 z-10 p-6 text-right text-white  ">
-                  <h3 className="text-2xl font-bold mb-1 group-hover:text-[#3db94c] transition-colors duration-300">
+                  <h3 className="opacity-60 text-2xl font-bold mb-1 group-hover:opacity-100  group-hover:text-[#3db94c] transition-colors duration-300">
                     {member.name}
                   </h3>
-                  <p className="text-gray-200 font-medium">{member.position}</p>
+                  <p className="text-gray-200 font-bold group-hover:text-[#3db94c]">{member.position}</p>
                 </div>
 
                 {/* Green Bottom Border Animation */}
