@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import SocialMediaIcons from "./SocialMediaIcons";
 
 export default function Header() {
   // Array of background images
@@ -9,38 +10,56 @@ export default function Header() {
     "/images/home/bg-corpers.webp",
     "/images/home/bg-kids.webp",
     "/images/home/bg-waste.webp",
-    "/images/home/headerbg.jpg",
+    "/images/home/headerbg.JPG",
     "/images/home/bg-market.jpg"
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Auto-rotate images every 5 seconds
+  const slideIntervalRef = useRef(null);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % backgroundImages.length
-      );
-    }, 5000);
+    setIsClient(true);
 
-    return () => clearInterval(interval);
-  }, [backgroundImages.length]);
-
-  // Handle scroll for header background
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const startSlideshow = () => {
+      slideIntervalRef.current = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+      }, 6000);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    startSlideshow();
+
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      clearInterval(slideIntervalRef.current);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [backgroundImages.length]);
+
+  // 👇 Function to handle manual image click
+  const handleImageClick = (index) => {
+    setCurrentImageIndex(index);
+
+    // Pause the current interval
+    clearInterval(slideIntervalRef.current);
+
+    // Restart slideshow after 10 seconds
+    slideIntervalRef.current = setTimeout(() => {
+      slideIntervalRef.current = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+      }, 6000);
+    }, 10000);
+  };
+
+  if (!isClient) return null;
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background Images with Smooth Transitions */}
       {backgroundImages.map((image, index) => (
         <div
           key={index}
@@ -53,10 +72,9 @@ export default function Header() {
         />
       ))}
 
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/50  pointer-events-none" />
 
-      {/* Image Indicators */}
-      <div className="absolute top-4 right-4 md:top-20 md:right-6 z-50 flex space-x-2">
+      <div className="absolute top-4 right-4 md:top-25 md:right-6 z-50 flex space-x-2">
         {backgroundImages.map((_, index) => (
           <button
             key={index}
@@ -66,13 +84,13 @@ export default function Header() {
                 ? 'bg-white shadow-lg' 
                 : 'bg-white/40 hover:bg-white/60'
             }`}
+            
           />
         ))}
       </div>
 
-      {/* FIXED: Added fixed positioning and proper background */}
       <header className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-gray-800 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        isScrolled ? 'bg-[#3db94c]/75 backdrop-blur-xl shadow-lg' : 'bg-transparent'
       }`}>
         {/* Mobile Header */}
         <div className={`md:hidden transition-colors duration-300 ${
@@ -109,79 +127,55 @@ export default function Header() {
           }`}>
             <div className="bg-gray-700 backdrop-blur-sm h-[100vh] ">
               <div className="px-4 py-2 space-y-2">
-                {/* Social Links */}
-                <div className="flex justify-center space-x-4 py-3 border-b border-white/20">
-                  <a
-                    href="https://www.instagram.com/wonderwomannigeria"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition-transform duration-300"
-                  >
-                    <img src="/images/IG.svg" alt="Instagram" className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/wonderwoman-nigeria/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition-transform duration-300"
-                  >
-                    <img src="/images/linkedin.svg" alt="LinkedIn" className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://www.facebook.com/share/1737CB8aWV"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition-transform duration-300"
-                  >
-                    <img src="/images/facebook.svg" alt="Facebook" className="w-6 h-6" />
-                  </a>
-                </div>
+               <SocialMediaIcons />
 
                 {/* Navigation Links */}
                 <Link
-                  href="/"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                  href="/#"
+                  className="block font-semibold px-4 py-3 text-white hover:text-black  
+
+                  "
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link
-                  href="/projects"
+                  href="/#"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Projects
                 </Link>
                 <Link
-                  href="/about"
+                  href="/#"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   About
                 </Link>
                 <Link
-                  href="/volunteer"
+                  href="/#"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Volunteer
                 </Link>
                 <Link
-                  href="/blog"  
+                  href="/#"  
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Blog
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/#"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Contact
                 </Link>
                 <Link
-                  href="/donate"
+                  href="/#"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -196,93 +190,101 @@ export default function Header() {
         <nav className="hidden md:block relative max-w-7xl mx-auto px-6 py-2">
           <div className="flex items-center justify-between">
             <div className="flex gap-4">
-              {/* Social Links */}
-              <div className="flex items-center space-x-4">
-                <a
-                  href="https://www.instagram.com/wonderwomannigeria"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:scale-110 transition-transform duration-300"
-                >
-                  <img src="/images/IG.svg" alt="Instagram" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/wonderwoman-nigeria/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:scale-110 transition-transform duration-300"
-                >
-                  <img src="/images/linkedin.svg" alt="LinkedIn" />
-                </a>
-                <a
-                  href="https://www.facebook.com/share/1737CB8aWV"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:scale-110 transition-transform duration-300"
-                >
-                  <img src="/images/facebook.svg" alt="Facebook" />
-                </a>
-              </div>
+             
+             <SocialMediaIcons />
 
               {/* Navigation Links - Left */}
               <div className="flex items-center space-x-1">
-                <Link
-                  href="/"
-                  className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
+              <Link
+                  href="/#"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
                 >
                   Home
                 </Link>
+
                 <Link
-                  href="/projects"
-                  className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
+                  href="/#"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
                 >
                   Projects
                 </Link>
                 <Link
-                  href="/about"
-                  className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
+                  href="/#"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
                 >
-                  About
+                 About
                 </Link>
               </div>
             </div>
 
             {/* Desktop Logo */}
-              <Link href="/">
+              <Link href="/#">
                 <img
-                  className="h-20 w-40 object-cover"
+                  className="h-20 w-40 object-contain"
                   src="/images/logo.png"
                   alt="Logo"
                 />
               </Link>
 
             {/* Right - Additional Links */}
+            <div className="flex gap-4">
             <div className="flex items-center space-x-1">
-              <Link
-                href="/volunteer"
-                className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
-              >
-                Volunteer
-              </Link>
-              <Link
-                href="/blog"
-                className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
-              >
-                Contact
-              </Link>
-              <Link
-                href="/donate"
-                className="font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm text-white hover:bg-white/10"
+            <Link
+                  href="/#"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  Volunteer
+                </Link>
+                <Link
+                  href="/#"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  Blog
+                </Link>
+                <Link
+                  href="#contact"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                 Contact
+                </Link>
+            </div>
+
+                          <Link
+                href="/#"
+                className={`font-semibold px-5 py-2 rounded-md transition-all duration-300 text-sm border shadow-sm ${
+                  isScrolled
+                    ? "bg-white text-[#3db94c] border-[#3db94c] hover:bg-[#3db94c] hover:text-white"
+                    : "bg-[#3DB94C12] text-[#3db94c] border-[#3db94c] hover:bg-[#3db94c] hover:text-white"
+                }`}
               >
                 Donate
               </Link>
-            </div>
+
+          </div>
           </div>
         </nav>
       </header>
@@ -291,21 +293,24 @@ export default function Header() {
       <section className="relative flex-1 flex items-center md:items-end justify-center min-h-screen px-4 pt-16 md:pt-0">
         {/* Hero Content */}
         <div className="relative z-10 text-center mx-auto">
-          <h1 className="font-poppins text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-bold text-white mb-4 tracking-tight leading-tight">
-            Wonderful Woman for Sustainability Foundation 
+        <h1 className="font-poppins text-2xl sm:text-3xl md:text-3xl lg:text-5xl font-extrabold text-white mb-4 tracking-tight leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+            Wonderful Woman for Sustainability Foundation
           </h1>
-          <h3 className="text-[#3db94c] text-lg sm:text-xl md:text-3xl font-bold mb-4">
+
+          <h3 className="text-[#3db94c] text-xl sm:text-2xl md:text-3xl font-bold mb-6 tracking-wide uppercase">
             Wonder Woman Nigeria
           </h3>
-          <p className="font-lato text-sm sm:text-base md:text-lg lg:text-xl text-white/80 my-6 md:my-8 max-w-xs sm:max-w-lg md:max-w-2xl mx-auto leading-relaxed font-medium px-2">
-            Women and Girls empowerment, Gender equality, Justice for rape
-            victims, Community Development, Menstruation and SRH.
+
+          <p className="font-lato text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-8 px-4 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            Empowering women and girls, advancing gender equality, and building sustainable communities through advocacy and action.
           </p>
 
+
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-8 md:mb-10 px-4">
-            <button className="bg-[#3db94c] cursor-pointer font-bold py-3 px-6 rounded text-sm md:text-base transition-all duration-300 transform shadow-lg text-white hover:bg-white hover:text-[#3db94c] w-full sm:w-auto">
-              Donate Now
-            </button>
+          <button className="bg-[#3DB94C12] border border-[#3db94c] text-[#3db94c] font-bold py-3 px-6 rounded-md text-sm md:text-base transition-all duration-300 transform shadow-sm hover:bg-[#3db94c] hover:text-white w-full sm:w-auto">
+            Donate Now
+          </button>
+
             <button className="bg-black cursor-pointer text-white font-bold py-3 px-6 rounded-lg text-sm md:text-base transition-all duration-300 transform shadow-lg hover:bg-white hover:text-[#3db94c] w-full sm:w-auto">
               Discover More
             </button>

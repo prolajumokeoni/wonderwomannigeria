@@ -1,44 +1,71 @@
 "use client";
-import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
+import SocialMediaIcons from "./SocialMediaIcons";
 
 const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <div className="bg-gray-800 text-gray-300 py-8 ">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col lg:flex-row items-center justify-between space-y-4">
-          {/* Social Icons */}
-          <div className="flex justify-center space-x-4 py-3">
-            <a
-              href="https://www.instagram.com/wonderwomannigeria"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-transform duration-300"
-            >
-              <img src="/images/IG.svg" alt="Instagram" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/wonderwoman-nigeria/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-transform duration-300"
-            >
-              <img src="/images/linkedin.svg" alt="LinkedIn" className="w-6 h-6" />
-            </a>
-            <a
-              href="https://www.facebook.com/share/1737CB8aWV"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-110 transition-transform duration-300"
-            >
-              <img src="/images/facebook.svg" alt="Facebook" className="w-6 h-6" />
-            </a>
-          </div>
- 
+    <div>
+    <section id="contact" className="py-20 bg-white text-gray-900">
+  <div className="container mx-auto px-4">
+    {/* Header */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold mb-4 text-gray-900">
+        Get Involved
+      </h2>
+      <div className="w-24 h-1 bg-[#3db94c] mx-auto mb-6"></div>
+      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        Join us in our mission to create lasting positive change. Every
+        contribution makes a difference.
+      </p>
+    </div>
 
-          {/* Copyright */}
-          <p className="text-sm text-center">
+    {/* Contact Info */}
+    <div className="grid md:grid-cols-3 gap-8">
+      <div className="text-center">
+        <div className="w-16 h-16 bg-[#3db94c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Mail className="w-8 h-8 text-[#3db94c]" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2 text-gray-900">Email Us</h3>
+        <p className="text-gray-600 mb-1">info@wonderwomannigeria.org</p>
+        <p className="text-gray-600">volunteer@wonderwomannigeria.org</p>
+      </div>
+
+      <div className="text-center">
+        <div className="w-16 h-16 bg-[#3db94c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Phone className="w-8 h-8 text-[#3db94c]" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2 text-gray-900">Call Us</h3>
+        <p className="text-gray-600">+2348102657973</p>
+      </div>
+
+      <div className="text-center">
+        <div className="w-16 h-16 bg-[#3db94c]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <MapPin className="w-8 h-8 text-[#3db94c]" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2 text-gray-900">Abuja, Nigeria</h3>
+      </div>
+    </div>
+
+    {/* Buttons */}
+    <div className="text-center mt-12 flex flex-col gap-4 justify-center lg:flex-row">
+      <button className="bg-[#3db94c] text-white font-bold py-3 px-6 rounded-md text-sm md:text-base transition-all duration-300 transform shadow-sm hover:bg-[#36a344] w-full sm:w-auto">
+        Donate Now
+      </button> 
+
+      <button className="border border-[#3db94c] text-[#3db94c] px-8 py-3 rounded-lg font-medium hover:bg-[#3db94c] hover:text-white transition-all duration-300 w-full sm:w-auto">
+        Volunteer
+      </button>
+    </div>
+  </div>
+</section>
+
+    
+      <div className="bg-[#3db94c]/75 text-white py-4">
+        <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-3 lg:flex-row lg:justify-between px-4 text-center lg:text-left">
+          <SocialMediaIcons />
+          <p className="text-sm font-medium">
             &#169; {year} Wonder Woman Nigeria. All rights reserved.
           </p>
         </div>
