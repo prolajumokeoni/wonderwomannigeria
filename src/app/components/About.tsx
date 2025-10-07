@@ -26,7 +26,7 @@ import {
 const About = () => {
   const stats = [
     {
-      number: 1000,
+      number: 10000,
       suffix: "+",
       label: "Lives Impacted",
       icon: <Heart className="w-6 h-6" />,
@@ -55,8 +55,7 @@ const About = () => {
     {
       icon: <Droplet className="w-8 h-8" />,
       title: "Plastics for Pads Project ",
-      description:
-        "Safeguarding children's rights and providing safe spaces for vulnerable youth.",
+      description: "It is a pioneering circular economy model that tackles two urgent challenges: period poverty and plastic pollution, and empowers girls and women to experience their menstrual periods in a safe, confident, and dignified way.",
       color: "bg-red-100 text-red-600",
     },
     {
@@ -91,7 +90,7 @@ const About = () => {
       icon: <Shield className="w-8 h-8" />,
       title: "Child, Not Bride Campaign",
       description:
-        "Emergency response and rebuilding efforts for communities affected by natural disasters.",
+        "Awareness drives in northern Nigeria against child marriage, helping families keep girls in school.",
       color: "bg-purple-100 text-purple-600",
     },
   ];
@@ -168,7 +167,7 @@ const About = () => {
                 </p>
 
                 {/* Align Learn More to the bottom */}
-                <button className="mt-auto text-red-500 font-medium hover:text-red-600 flex items-center space-x-1">
+                <button className="cursor-pointer mt-auto text-red-500 font-medium hover:text-red-600 flex items-center space-x-1">
                   <span>Learn More</span>
                   <ChevronRight className="w-4 h-4" />
                 </button>

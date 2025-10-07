@@ -50,11 +50,11 @@ const Footer = () => {
 
     {/* Buttons */}
     <div className="text-center mt-12 flex flex-col gap-4 justify-center lg:flex-row">
-      <button className="bg-[#3db94c] text-white font-bold py-3 px-6 rounded-md text-sm md:text-base transition-all duration-300 transform shadow-sm hover:bg-[#36a344] w-full sm:w-auto">
+      <button className="cursor-pointer opacity-80 bg-[#3db94c] text-white font-bold py-3 px-6 rounded-md text-sm md:text-base transition-all duration-300 hover:opacity-100 w-full sm:w-auto">
         Donate Now
       </button> 
 
-      <button className="border border-[#3db94c] text-[#3db94c] px-8 py-3 rounded-lg font-medium hover:bg-[#3db94c] hover:text-white transition-all duration-300 w-full sm:w-auto">
+      <button className="cursor-pointer opacity-80 border border-black text-white bg-black px-8 py-3 rounded-lg font-medium hover:opacity-100   transition-all duration-300 w-full sm:w-auto">
         Volunteer
       </button>
     </div>
@@ -62,7 +62,7 @@ const Footer = () => {
 </section>
 
     
-      <div className="bg-[#3db94c]/75 text-white py-4">
+      <div className="bg-black text-white py-4">
         <div className="max-w-7xl mx-auto flex flex-col items-center justify-center gap-3 lg:flex-row lg:justify-between px-4 text-center lg:text-left">
           <SocialMediaIcons />
           <p className="text-sm font-medium">
