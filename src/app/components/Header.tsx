@@ -59,7 +59,7 @@ export default function Header() {
   if (!isClient) return null;
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#3db94c]/75">
+    <div className="relative min-h-screen overflow-hidden bg-black">
       {backgroundImages.map((image, index) => (
         <div
           key={index}

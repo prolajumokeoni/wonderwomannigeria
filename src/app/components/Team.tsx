@@ -10,7 +10,7 @@ export default function TeamSection() {
     { name: "Mrs.Yango Sor", position: " Secretary and Gender Expert", image: "/images/team/yango.jpeg" },
     { name: "Mr. Hassan Sufyan Abdullahi", position: "Finance / Project Manager ", image: "/images/team/hassan.jpeg" },
     { name: "Ms. Oluwatobi Precious Odunubi", position: "PR/ Media Manager", image: "/images/team/tobi.jpeg" },
-    { name: "Ms. Oni Olajumoke", position: "IT Volunteer Manager", image: "/images/team/jumoke.jpg" },
+    { name: "Ms. Oni Olajumoke", position: "IT Manager", image: "/images/team/jumoke.jpg" },
   ];
 
  
