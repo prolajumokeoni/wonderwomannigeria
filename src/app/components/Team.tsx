@@ -5,12 +5,12 @@ import Image from "next/image";
 
 export default function TeamSection() {
   const teamMembers = [
-    { name: "Ms. Elina E.", position: "President / Founder", image: "/images/team/elina.jpeg" },
-    { name: "Ms. Anne Dirkling", position: "Vice President", image: "/images/team/anne.jpeg" },
-    { name: "Mrs.Yango Sor", position: " Secretary and Gender Expert", image: "/images/team/yango.jpeg" },
-    { name: "Mr. Hassan Sufyan Abdullahi", position: "Finance / Project Manager ", image: "/images/team/hassan.jpeg" },
-    { name: "Ms. Oluwatobi Precious Odunubi", position: "PR/ Media Manager", image: "/images/team/tobi.jpeg" },
-    { name: "Ms. Oni Olajumoke", position: "IT Manager", image: "/images/team/jumoke.jpg" },
+    { name: "Elina E.", position: "President / Founder", image: "/images/team/elina.jpeg" },
+    { name: "Anne Dirkling", position: "Vice President", image: "/images/team/anne.jpeg" },
+    { name: "Yango Sor", position: " Secretary and Gender Expert", image: "/images/team/yango.jpeg" },
+    { name: "Hassan Sufyan Abdullahi", position: "Finance / Project Manager ", image: "/images/team/hassan.jpeg" },
+    { name: "Oluwatobi Precious Odunubi", position: "PR/ Media Manager", image: "/images/team/tobi.jpeg" },
+    { name: "Oni Olajumoke", position: "IT Manager", image: "/images/team/jumoke.jpg" },
   ];
 
  
@@ -42,11 +42,11 @@ export default function TeamSection() {
                 />
 
                 {/* Text bottom-right */}
-                <div className="absolute bottom-0 right-0 z-10 p-6 text-right text-white  ">
-                  <h3 className="opacity-60 text-2xl font-bold mb-1 group-hover:opacity-100  group-hover:text-[#3db94c] transition-colors duration-300">
+                <div className="absolute bottom-0 right-0 z-10 p-6 text-right text-white">
+                  <h3 className="text-white text-2xl font-bold mb-1 group-hover:opacity-100 group-hover:text-[#3db94c] transition-colors duration-300">
                     {member.name}
                   </h3>
-                  <p className="text-gray-200 font-bold group-hover:text-[#3db94c]">{member.position}</p>
+                  <p className="text-white font-bold group-hover:text-[#3db94c]">{member.position}</p>
                 </div>
 
                 {/* Green Bottom Border Animation */}
