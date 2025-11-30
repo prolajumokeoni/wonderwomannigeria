@@ -220,8 +220,8 @@ export default function ProjectsPage() {
       tagline: "Clean communities, healthy futures",
       images: [
         "/images/projects/rcu/rcu1.jpeg",
-        "/images/projects/rcu/rcu2.jpeg",
         "/images/projects/rcu/rcu.jpeg",
+        "/images/projects/rcu/rcu2.jpeg",
         "/images/projects/rcu/rcu4.png",
         "/images/projects/rcu/rcu3.jpeg",
       ],
@@ -427,33 +427,27 @@ function ProjectCard({ project }) {
           </button>
         )}
 
-        <div 
-          id={`scroll-${project.id}`}
-          className={`overflow-x-auto scrollbar-hide ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
-          onScroll={handleScroll}
-          style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
-        >
-          <div className="flex gap-4 pb-2" style={{ width: 'max-content' }}>
-            {project.images.map((image, idx) => (
-              <div
-                key={idx}
-                className="flex-shrink-0 w-64 h-64 md:w-64 md:h-64 sm:w-48 sm:h-48 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-                style={{ userSelect: 'none' }}
-              >
-                <img
-                  src={image}
-                  alt={`${project.title} - Image ${idx + 1}`}
-                  className="w-full h-full object-cover pointer-events-none"
-                  draggable="false"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+    
+    
+      <div
+        id={`scroll-${project.id}`}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onScroll={handleScroll}
+        className="overflow-x-auto overflow-y-hidden custom-scrollbar whitespace-nowrap cursor-grab pb-3"
+      >
+        {project.images.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            className="inline-block w-64 h-48 rounded-lg object-cover mr-4"
+          />
+        ))}
+      </div>
+
+
       </div>
 
       {/* Content Section */}

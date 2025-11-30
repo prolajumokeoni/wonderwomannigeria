@@ -52,3 +52,26 @@
   max-height: 90vh;
   margin: auto;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #e6f8ea;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3db94c;
+  border-radius: 10px;
+  border: 2px solid #e6f8ea;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #2f9c3d;
+}
+
+.custom-scrollbar::-webkit-scrollbar:vertical {
+  display: none;
+}
