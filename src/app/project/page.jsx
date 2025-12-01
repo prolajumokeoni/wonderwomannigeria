@@ -3,7 +3,8 @@
 import Impact from "../components/Impact";
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
-import { useState } from "react";
+import { useState, useEffect, } from "react";
+
 
 const ImpactHeader = () => <div className="bg-[#3db94c] text-white py-12 text-center"><h2 className="text-3xl font-bold">Our Projects</h2><p className="mt-2">Making a difference across Nigeria</p></div>;
 
@@ -296,6 +297,18 @@ export default function ProjectsPage() {
     ? projects 
     : projects.filter(p => p.category === activeTab);
 
+useEffect(() => {
+  if (window.location.hash) {
+    const id = window.location.hash.substring(1);
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  }
+}, []);
+    
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
@@ -384,7 +397,7 @@ function ProjectCard({ project }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div id={`project-${project.id}`} className="bg-white rounded-xl shadow-lg overflow-hidden">
       {/* Header Section */}
       <div className="p-8 pb-6">
         <div className="flex items-start justify-between mb-4">

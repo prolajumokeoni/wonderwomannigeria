@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Menu,
@@ -53,12 +54,14 @@ const About = () => {
 
   const programs = [
     {
+      id: 1,
       icon: <Droplet className="w-8 h-8" />,
       title: "Plastics for Pads Project ",
       description: "It is a pioneering circular economy model that tackles two urgent challenges: period poverty and plastic pollution, and empowers girls and women to experience their menstrual periods in a safe, confident, and dignified way.",
       color: "bg-red-100 text-red-600",
     },
     {
+      id: 9,
       icon: <HandHelping className="w-8 h-8" />,
       title: "Random Acts of Kindness Week & Outreaches",
       description:
@@ -66,6 +69,7 @@ const About = () => {
       color: "bg-blue-100 text-blue-600",
     },
     {
+      id: 4,
       icon: <VenusAndMars className="w-8 h-8" />,
       title: "GBV Awareness & Support",
       description:
@@ -73,6 +77,7 @@ const About = () => {
       color: "bg-green-100 text-green-600",
     },
     {
+      id: 6,
       icon: <BookOpen className="w-8 h-8" />,
       title: "Literacy Promotion",
       description:
@@ -80,6 +85,7 @@ const About = () => {
       color: "bg-cyan-100 text-cyan-600",
     },
     {
+      id: 2,
       icon: <HeartPlus className="w-8 h-8" />,
       title: "The Little Sister Project",
       description:
@@ -87,6 +93,7 @@ const About = () => {
       color: "bg-orange-100 text-orange-600",
     },
     {
+      id: 5,
       icon: <Shield className="w-8 h-8" />,
       title: "Child, Not Bride Campaign",
       description:
@@ -98,6 +105,15 @@ const About = () => {
   const [visible, setVisible] = useState(false);
   const [counts, setCounts] = useState(stats.map(() => 0));
   const sectionRef = useRef<HTMLDivElement | null>(null);
+
+
+
+const router = useRouter();
+
+const handleLearnMore = (programId) => {
+  router.push(`/project#project-${programId}`);
+};
+
 
   // Observe when section comes into view
   useEffect(() => {
@@ -165,12 +181,13 @@ const About = () => {
                 <p className="text-gray-600 mb-4 flex-grow">
                   {program.description}
                 </p>
-
-                {/* Align Learn More to the bottom */}
-                <button className="cursor-pointer mt-auto text-red-500 font-medium hover:text-red-600 flex items-center space-x-1">
-                  <span>Learn More</span>
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+              <button
+                onClick={() => handleLearnMore(program.id)}
+                className="cursor-pointer mt-auto text-red-500 font-medium hover:text-red-600 flex items-center space-x-1"
+              >
+                <span>Learn More</span>
+                <ChevronRight className="w-4 h-4" />
+              </button>
               </div>
             ))}
           </div>

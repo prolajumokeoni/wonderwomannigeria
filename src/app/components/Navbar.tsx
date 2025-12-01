@@ -108,6 +108,13 @@ export default function Navbar() {
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
+                  Press
+                </Link>
+                <Link
+                  href="/#"
+                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
                   Blog
                 </Link>
                 <Link
@@ -182,6 +189,17 @@ export default function Navbar() {
             {/* Right Links */}
             <div className="flex gap-4 flex-1 justify-end">
               <div className="flex">
+
+                 <Link
+                  href="/#"
+                  className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
+                    isScrolled
+                      ? "text-white hover:text-black hover:bg-white/90"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                 Press
+                </Link>
                 <Link
                   href="/#"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
