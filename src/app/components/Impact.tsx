@@ -51,7 +51,7 @@ const Impact = () => {
     <div className="  ">
       <section
         ref={sectionRef}
-        className="relative h-[600px] bg-cover bg-center bg-no-repeat flex items-end"
+        className="relative bg-cover bg-center bg-no-repeat flex items-end  h-screen"
         style={{
           backgroundImage: "url('/images/impact/impact.jpeg')",
         }}
