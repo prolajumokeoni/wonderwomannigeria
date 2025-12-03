@@ -48,7 +48,7 @@ const Impact = () => {
   }, [visible]);
 
   return (
-    <div className="  ">
+    <div className="bg-black">
       <section
         ref={sectionRef}
         className="relative bg-cover bg-center bg-no-repeat flex items-end  h-screen"
