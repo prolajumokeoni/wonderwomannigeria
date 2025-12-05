@@ -118,7 +118,7 @@ export default function Navbar() {
                   Blog
                 </Link>
                 <Link
-                  href="/#"
+                  href="/blog"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
