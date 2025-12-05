@@ -94,15 +94,35 @@ export default function Navbar() {
           >
             <div className="bg-black backdrop-blur-sm h-[90vh] flex justify-around pb-10 flex-col overflow-hidden">
               <div className="px-4 py-2 space-y-2">
-                {/* ...links (same as you had) */}
-                <Link
+               <Link
                   href="/"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
                 </Link>
-                {/* ...other links */}
+                <Link
+                  href="/project"
+                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Projects
+                </Link>
+                <Link
+                  href="/#contact"
+                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+                <Link
+                  href="/blog"
+                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                 Blog
+                </Link>
+
               </div>
             </div>
           </div>
@@ -133,7 +153,7 @@ export default function Navbar() {
                 >
                   Projects
                 </Link>
-                <Link
+                {/* <Link
                   href="/#about"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
                     showGreenBackground
@@ -142,7 +162,7 @@ export default function Navbar() {
                   }`}
                 >
                   About
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -161,7 +181,7 @@ export default function Navbar() {
             {/* Right Links */}
             <div className="flex gap-4 flex-1 justify-end">
               <div className="flex">
-                <Link
+                {/* <Link
                   href="/#press"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
                     showGreenBackground
@@ -170,7 +190,7 @@ export default function Navbar() {
                   }`}
                 >
                   Press
-                </Link>
+                </Link> */}
                 <Link
                   href="/blog"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
@@ -191,7 +211,7 @@ export default function Navbar() {
                 >
                   Contact
                 </Link>
-                <Link
+                {/* <Link
                   href="/#volunteer"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
                     showGreenBackground
@@ -200,7 +220,7 @@ export default function Navbar() {
                   }`}
                 >
                   Volunteer
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

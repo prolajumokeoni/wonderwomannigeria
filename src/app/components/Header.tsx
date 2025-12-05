@@ -96,9 +96,9 @@ export default function Header() {
               Donate Now
             </button> */}
 
-            <button className="bg-[#3DB94C] cursor-pointer text-white font-bold py-3 px-6 rounded-lg text-sm md:text-base transition-all duration-300 transform shadow-lg hover:bg-white hover:text-[#3db94c] w-full sm:w-auto">
+            {/* <button  className="bg-[#3DB94C] cursor-pointer text-white font-bold py-3 px-6 rounded-lg text-sm md:text-base transition-all duration-300 transform shadow-lg hover:bg-white hover:text-[#3db94c] w-full sm:w-auto">
               Discover More
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

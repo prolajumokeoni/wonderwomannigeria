@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
-export default function PartnersPage() {
-    
-  const defaultLogos = [
+
+
+export default function Partners() {
+  const logos = [
+    "/images/partners/unicef.png",
     "/images/partners/france.jpeg",
     "/images/partners/german.jpeg",
     "/images/partners/canada.jpeg",
@@ -16,62 +17,80 @@ export default function PartnersPage() {
     "/images/partners/sesci.jpeg",
     "/images/partners/ad.jpeg",
     "/images/partners/ecobarter.jpeg",
-    
+    "/images/partners/afrivan.png",
+    "/images/partners/bf.png",
+    "/images/partners/drive.png",
+    "/images/partners/edu.png",
+    "/images/partners/msi.png",
+    "/images/partners/nhw.png",
+    "/images/partners/psi.png",
+    "/images/partners/sayp.png",
+    "/images/partners/shak.png",
+    "/images/partners/swag.png",
+    "/images/partners/water.png",
   ];
 
+  // Double the logos array for seamless loop
+  const doubledLogos = [...logos, ...logos];
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         <header className="mb-8 text-center">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
             Our Partners and Sponsors
           </h1>
           <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
-            We’re proud to partner with organizations who support our mission.
+            We're proud to partner with organizations who support our mission.
           </p>
         </header>
 
-        {/* Grid: 2 cols on xs, 3 on sm, 4 on md, 6 on xl */}
-        <section aria-label="Partners logos" className="bg-white rounded-lg p-6 shadow-sm">
-          <ul
-            role="list"
-            className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 items-center justify-center"
-          >
-            {defaultLogos.map((src, idx) => (
-              <li key={idx} className="flex items-center justify-center">
-                <div className="w-full flex items-center justify-center p-3 rounded-md hover:scale-105 transform transition duration-200 ease-out">
-                  {/*
-                    Use next/image in a Next.js project for automatic optimization.
-                    Here we use a regular <img> for simplicity. Make sure images are
-                    sized similarly (or use object-contain) so the grid looks even.
-                  */}
-                  <img
-                    src={src}
-                    alt={`Partner logo ${idx + 1}`}
-                    loading="lazy"
-                    className="max-h-16 sm:max-h-20 md:max-h-24 lg:max-h-28 object-contain"
-                    onError={(e) => {
-                      // graceful fallback: replace broken logos with a neutral placeholder
-                      (e.currentTarget as HTMLImageElement).src = "/images/partners/placeholder.jpeg";
-                    }}
-                  />
-                </div>
-              </li>
+        {/* INFINITE SLIDESHOW */}
+        <div className="overflow-hidden p-10 mt-12">
+          <div className="flex gap-8 w-max animate-slide">
+            {doubledLogos.map((src, idx) => (
+              <img
+                key={idx}
+                src={src}
+                alt={`Partner logo ${idx + 1}`}
+                className="h-32 object-contain rounded-lg flex-shrink-0"
+                onError={(e) => {
+                  e.currentTarget.src = "/images/partners/placeholder.jpeg";
+                }}
+              />
             ))}
-          </ul>
-
-          {/* Optional: CTA */}
-          <div className="mt-8 text-center">
-            <a
-              href="/partners/contact"
-              className="inline-block px-6 py-2 bg-[#3db94c] text-white font-semibold rounded-lg shadow hover:bg-green-600 transition"
-            >
-              Become a Partner
-            </a>
           </div>
-        </section>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-8 text-center">
+          <a
+            href="#contact"
+            className="inline-block px-6 py-2 bg-[#3db94c] text-white font-semibold rounded-lg shadow hover:bg-green-600 transition"
+          >
+            Become a Partner
+          </a>
+        </div>
       </div>
+
+      <style>{`
+        @keyframes slide {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-slide {
+          animation: slide 40s linear infinite;
+        }
+        
+        .animate-slide:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </main>
   );
 }
