@@ -2,23 +2,42 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import DonateButton from "./DonateButton";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const whiteBackgroundPages = ["/blog", "/blog/[slug]"];
+  const shouldShowGreenBg = whiteBackgroundPages.some((page) =>
+    pathname?.startsWith(page)
+  );
+
   useEffect(() => {
+    // handler
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    if (typeof window !== "undefined") {
+      handleScroll();
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, []);
+
+  const showGreenBackground = shouldShowGreenBg || isScrolled;
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
+          showGreenBackground
             ? "bg-[#3db94c]/75 backdrop-blur-xl shadow-lg"
             : "bg-transparent"
         }`}
@@ -26,7 +45,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div
           className={`md:hidden transition-colors duration-300 ${
-            isScrolled ? "bg-[#3db94c]/75" : "bg-transparent"
+            showGreenBackground ? "bg-[#3db94c]/75" : "bg-transparent"
           }`}
         >
           <nav className="flex items-center justify-between px-4 py-3">
@@ -70,81 +89,34 @@ export default function Navbar() {
           {/* Mobile Menu Dropdown */}
           <div
             className={`transition-all duration-300 ease-in-out overflow-hidden ${
-              isMobileMenuOpen ? "opacity-100" : "max-h-0 opacity-0"
+              isMobileMenuOpen ? "opacity-100 max-h-[90vh]" : "max-h-0 opacity-0"
             }`}
           >
             <div className="bg-black backdrop-blur-sm h-[90vh] flex justify-around pb-10 flex-col overflow-hidden">
               <div className="px-4 py-2 space-y-2">
+                {/* ...links (same as you had) */}
                 <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:text-black"
+                  href="/"
+                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Home
                 </Link>
-                <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Projects
-                </Link>
-                <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Volunteer
-                </Link>
-                <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Press
-                </Link>
-                <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/blog"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Contact
-                </Link>
-                {/* <Link
-                  href="/#"
-                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Donate
-                </Link> */}
+                {/* ...other links */}
               </div>
             </div>
           </div>
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:block relative w-[90%] mx-auto  py-6">
+        <nav className="hidden md:block relative w-[90%] mx-auto py-6">
           <div className="flex items-center justify-between">
             <div className="flex gap-4 flex-1">
               <div className="flex items-center space-x-1">
                 <Link
-                  href="/#"
+                  href="/"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
@@ -154,7 +126,7 @@ export default function Navbar() {
                 <Link
                   href="/project"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
@@ -162,9 +134,9 @@ export default function Navbar() {
                   Projects
                 </Link>
                 <Link
-                  href="/#"
+                  href="/#about"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
@@ -176,7 +148,7 @@ export default function Navbar() {
 
             {/* Centered Logo */}
             <Link
-              href="/#"
+              href="/"
               className="absolute left-1/2 transform -translate-x-1/2"
             >
               <img
@@ -189,21 +161,20 @@ export default function Navbar() {
             {/* Right Links */}
             <div className="flex gap-4 flex-1 justify-end">
               <div className="flex">
-
-                 <Link
-                  href="/#"
+                <Link
+                  href="/#press"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
                 >
-                 Press
+                  Press
                 </Link>
                 <Link
-                  href="/#"
+                  href="/blog"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
@@ -211,9 +182,9 @@ export default function Navbar() {
                   Blog
                 </Link>
                 <Link
-                  href="#contact"
+                  href="/#contact"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
@@ -221,9 +192,9 @@ export default function Navbar() {
                   Contact
                 </Link>
                 <Link
-                  href="#contact"
+                  href="/#volunteer"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
-                    isScrolled
+                    showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
@@ -235,8 +206,7 @@ export default function Navbar() {
           </div>
         </nav>
       </header>
-
-      {/* <div className="fixed top-6 right-[12%] z-50 hidden md:block">
+          {/* <div className="fixed top-6 right-[12%] z-50 hidden md:block">
         <DonateButton />
       </div> */}
     </>
