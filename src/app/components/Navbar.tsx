@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import DonateButton from "./DonateButton";
+import Image from "next/image";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -50,7 +50,7 @@ export default function Navbar() {
         >
           <nav className="flex items-center justify-between px-4 py-3">
             <Link href="/" className="flex-shrink-0">
-              <img
+              <Image
                 className="h-12 w-12 object-cover"
                 src="/images/logo.png"
                 alt="Logo"
@@ -171,7 +171,7 @@ export default function Navbar() {
               href="/"
               className="absolute left-1/2 transform -translate-x-1/2"
             >
-              <img
+              <Image
                 className="h-20 w-40 object-contain"
                 src="/images/logo.png"
                 alt="Logo"

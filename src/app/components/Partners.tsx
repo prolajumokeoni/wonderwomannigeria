@@ -1,6 +1,6 @@
 "use client";
 
-
+import Image from "next/image"; 
 
 export default function Partners() {
   const logos = [
@@ -49,7 +49,7 @@ export default function Partners() {
         <div className="overflow-hidden p-10 mt-12">
           <div className="flex gap-8 w-max animate-slide">
             {doubledLogos.map((src, idx) => (
-              <img
+              <Image
                 key={idx}
                 src={src}
                 alt={`Partner logo ${idx + 1}`}
