@@ -34,7 +34,6 @@ const Footer = () => {
       <h2 className="text-4xl font-bold mb-4 text-gray-900">
        
       </h2>
-      <div className="w-24 h-1 bg-[#3db94c] mx-auto mb-6"></div>
       
     </div>
 
@@ -64,6 +63,7 @@ const Footer = () => {
         <h3 className="text-xl font-semibold mb-2 text-gray-900">Abuja, Nigeria</h3>
       </div>
     </div>
+      <div className="w-24 h-1 bg-[#3db94c] mx-auto my-12 "></div>
 
     {/* Buttons */}
     <div className="text-center mt-12 flex flex-col gap-4 justify-center lg:flex-row">

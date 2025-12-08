@@ -51,8 +51,11 @@ export default function Navbar() {
           <nav className="flex items-center justify-between px-4 py-3">
             <Link href="/" className="flex-shrink-0">
               <Image
-                className="h-12 w-12 object-cover"
+                className="object-cover"
+                width={48}
+                height={48}
                 src="/images/logo.png"
+           
                 alt="Logo"
               />
             </Link>
@@ -172,9 +175,11 @@ export default function Navbar() {
               className="absolute left-1/2 transform -translate-x-1/2"
             >
               <Image
-                className="h-20 w-40 object-contain"
+                className="object-contain"
                 src="/images/logo.png"
                 alt="Logo"
+                width={160}
+                height={80}
               />
             </Link>
 

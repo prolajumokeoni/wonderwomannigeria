@@ -17,20 +17,21 @@ export default function Partners() {
     "/images/partners/sesci.jpeg",
     "/images/partners/ad.jpeg",
     "/images/partners/ecobarter.jpeg",
-    "/images/partners/afrivan.png",
+    "/images/partners/afrivan.jpeg",
     "/images/partners/bf.png",
     "/images/partners/drive.png",
     "/images/partners/edu.png",
     "/images/partners/msi.png",
     "/images/partners/nhw.png",
-    "/images/partners/psi.png",
-    "/images/partners/sayp.png",
+    "/images/partners/psi.jpg",
+    "/images/partners/sayp.jpeg",
     "/images/partners/shak.png",
     "/images/partners/swag.png",
     "/images/partners/water.png",
   ];
 
-  // Double the logos array for seamless loop
+
+         
   const doubledLogos = [...logos, ...logos];
 
   return (
@@ -41,25 +42,29 @@ export default function Partners() {
             Our Partners and Sponsors
           </h1>
           <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
-            We're proud to partner with organizations who support our mission.
+            We are proud to partner with organizations who support our mission.
           </p>
         </header>
 
-        {/* INFINITE SLIDESHOW */}
         <div className="overflow-hidden p-10 mt-12">
           <div className="flex gap-8 w-max animate-slide">
-            {doubledLogos.map((src, idx) => (
-              <Image
-                key={idx}
-                src={src}
-                alt={`Partner logo ${idx + 1}`}
-                className="h-32 object-contain rounded-lg flex-shrink-0"
-                onError={(e) => {
-                  e.currentTarget.src = "/images/partners/placeholder.jpeg";
-                }}
-              />
-            ))}
-          </div>
+              {doubledLogos.map((src, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-center bg-white rounded-lg flex-shrink-0n object-contain"
+                  style={{ width: 120, height: 100 }}
+                >
+                  <Image
+                    src={src}
+                    alt="Partner Logo"
+                    width={120}
+                    height={80}
+                    className="object-contain p-2"
+                  />
+                </div>
+              ))}
+            </div>
+
         </div>
 
         {/* CTA */}
