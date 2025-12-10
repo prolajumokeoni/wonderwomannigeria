@@ -4,6 +4,7 @@ import type { SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const POSTS_QUERY = `*[
   _type == "post" && defined(slug.current)
@@ -124,6 +125,8 @@ export default async function Blog() {
           </div>
         )}
       </div>
+            <Footer />
+      
     </main>
   );
 }

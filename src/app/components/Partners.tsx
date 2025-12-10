@@ -16,7 +16,6 @@ export default function Partners() {
     "/images/partners/plan.jpeg",
     "/images/partners/sesci.jpeg",
     "/images/partners/ad.jpeg",
-    "/images/partners/ecobarter.jpeg",
     "/images/partners/afrivan.jpeg",
     "/images/partners/bf.png",
     "/images/partners/drive.png",

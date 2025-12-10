@@ -2,9 +2,9 @@
 
 import Impact from "../components/Impact";
 import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
 import { useState, useEffect, } from "react";
-
+import Account from "../components/Account";
+import Footer from "../components/Footer"
 
 const ImpactHeader = () => <div className="bg-[#3db94c] text-white py-12 text-center"><h2 className="text-3xl font-bold">Our Projects</h2><p className="mt-2">Making a difference across Nigeria</p></div>;
 
@@ -252,6 +252,15 @@ export default function ProjectsPage() {
       year: "Since 2018",
       tagline: "Compassion in action since day one",
       images: [
+        "/images/projects/rak/rak11.jpeg", 
+        "/images/projects/rak/rak12.jpeg", 
+        "/images/projects/rak/rak15.jpeg", 
+        "/images/projects/rak/rak16.jpeg", 
+        "/images/projects/rak/rak14.jpeg", 
+        "/images/projects/rak/rak17.jpeg", 
+        "/images/projects/rak/rak18.jpeg", 
+        "/images/projects/rak/rak19.jpeg", 
+        "/images/projects/rak/rak21.jpeg", 
         "/images/projects/rak/rak1.jpeg", 
         "/images/projects/rak/rak3.jpeg", 
         "/images/projects/rak/rak4.jpeg", 
@@ -262,6 +271,7 @@ export default function ProjectsPage() {
         "/images/projects/rak/rak7.jpeg", 
         "/images/projects/rak/rak8.jpeg", 
         "/images/projects/rak/rak9.jpeg", 
+        "/images/projects/rak/rak10.jpeg", 
       ],
       description: "Our founding program, Random Acts of Kindness represents WWN's core values of compassion and community engagement. Through periodic outreaches, we support street children, orphans, and IDP residents with essential supplies while serving as a visible contact point for GBV cases and community needs.",
       objectives: [
@@ -339,6 +349,7 @@ useEffect(() => {
           ))}
         </div>
       </section>
+      <Account />
       <Footer />
     </div>
   );

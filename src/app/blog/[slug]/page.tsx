@@ -4,7 +4,7 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "../../../sanity/lib/client";
 import Link from "next/link";
 import Navbar from "../../components/Navbar";
-
+import Footer from "../../components/Footer";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -114,6 +114,8 @@ export default async function PostPage({
           </Link>
         </div>
       </div>
+            <Footer />
+      
     </main>
   );
 }

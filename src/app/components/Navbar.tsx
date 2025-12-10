@@ -132,7 +132,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:block relative w-[90%] mx-auto py-6">
+        <nav className="hidden md:block relative w-[90%] mx-auto py-8">
           <div className="flex items-center justify-between">
             <div className="flex gap-4 flex-1">
               <div className="flex items-center space-x-1">

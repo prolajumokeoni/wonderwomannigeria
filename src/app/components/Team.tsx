@@ -11,6 +11,7 @@ export default function TeamSection() {
     { name: "Hassan Sufyan Abdullahi", position: "Finance / Project Manager ", image: "/images/team/hassan.jpeg" },
     { name: "Oluwatobi Precious Odunubi", position: "PR/ Media Manager", image: "/images/team/tobi.jpeg" },
     { name: "Oni Olajumoke", position: "IT Manager", image: "/images/team/jumoke.jpg" },
+    { name: "Rahmah Idris", position: "MEAL Coordinator", image: "/images/team/rahmah.jpg" },
   ];
 
  
@@ -29,7 +30,7 @@ export default function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
             <div key={index} className="group">
               <div className="relative mb-6 overflow-hidden rounded-lg h-96 bg-gray-900">
