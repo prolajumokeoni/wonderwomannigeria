@@ -10,7 +10,7 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
+  projectId && dataset  
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
