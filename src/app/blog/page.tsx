@@ -32,8 +32,7 @@ export default async function Blog() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <Navbar />
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4 mt-[50px]">Blog</h1>
+        <div className="mb-20 text-center">
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

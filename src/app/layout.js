@@ -1,7 +1,10 @@
+'use client'
+
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+
+import './globals.css'
+
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -15,11 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Wonder Woman Nigeria",
-  description: "",
-};
-
+ 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
