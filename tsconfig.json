@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+      "baseUrl": "src",
+    "paths": {
+      "@sanity/*": ["sanity/*"]
+    },
     "target": "ES2017",
     "lib": [
       "dom",
