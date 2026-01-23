@@ -9,6 +9,7 @@ import {defineConfig} from 'sanity'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './src/sanity/env'
+
 import {schemaTypes} from './src/sanity/schemaTypes'
 
 export default defineConfig({
