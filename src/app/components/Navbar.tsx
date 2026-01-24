@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const whiteBackgroundPages = ["/blog", "/blog/[slug]"];
+  const whiteBackgroundPages = ["/blog", "/blog/[slug]", "/media"];
   const shouldShowGreenBg = whiteBackgroundPages.some((page) =>
     pathname?.startsWith(page)
   );
@@ -111,6 +111,14 @@ export default function Navbar() {
                 >
                   Projects
                 </Link>
+
+                <Link
+                  href="/media"
+                  className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Media
+                </Link>
                 <Link
                   href="/#contact"
                   className="block font-semibold px-4 py-3 text-white hover:bg-white/10 rounded-md transition-all duration-300"
@@ -132,7 +140,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:block relative w-[90%] mx-auto py-8">
+        <nav className="hidden md:block relative w-[90%] lg:w-[80%] mx-auto py-8">
           <div className="flex items-center justify-between">
             <div className="flex gap-4 flex-1">
               <div className="flex items-center space-x-1">
@@ -156,16 +164,16 @@ export default function Navbar() {
                 >
                   Projects
                 </Link>
-                {/* <Link
-                  href="/#about"
+                 <Link
+                  href="/media"
                   className={`font-semibold px-4 py-2 rounded-md transition-all duration-300 text-sm ${
                     showGreenBackground
                       ? "text-white hover:text-black hover:bg-white/90"
                       : "text-white hover:bg-white/10"
                   }`}
                 >
-                  About
-                </Link> */}
+                 Media
+                </Link> 
               </div>
             </div>
 

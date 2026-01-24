@@ -36,14 +36,10 @@ export default async function Blog() {
       <div className="w-full flex justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-[80%] py-16">
           {/* Header Section */}
-          <div className="my-16 text-center ">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">Our Blog</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover insights, stories, and updates from our team
-            </p>
-          </div>
+                  <h2 className="text-4xl font-bold mb-8 mt-20" >
+                Blog
+          </h2>
 
-          {/* Blog Grid */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post) => {
               const imageUrl = post.image

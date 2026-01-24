@@ -113,9 +113,7 @@ const router = useRouter();
 const handleLearnMore = (programId) => {
   router.push(`/project#project-${programId}`);
 };
-
-
-  // Observe when section comes into view
+ 
   useEffect(() => {
     if (!sectionRef.current) return;
 
@@ -150,7 +148,7 @@ const handleLearnMore = (programId) => {
   }, [visible]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white ">
       {/* Programs Section */}
       <section id="programs" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -165,7 +163,7 @@ const handleLearnMore = (programId) => {
               advocacy, and child protection.
             </p> */}
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto ">
             {programs.map((program, index) => (
               <div
                 key={index}
@@ -237,7 +235,7 @@ const handleLearnMore = (programId) => {
         </div>
       </section>
 
-      <section ref={sectionRef} className="py-20 ">
+      <section ref={sectionRef} className="py-20 max-w-7xl mx-auto bg-white">
         <div className="container mx-auto px-4">
           <div className="grid   md:grid-cols-4 gap-6 mb-16">
             {stats.map((stat, index) => (

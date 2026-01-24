@@ -35,7 +35,7 @@ export default function Partners() {
 
   return (
     <main className="bg-gray-50 py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className=" mx-auto">
         <header className="mb-8 text-center">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
             Our Partners and Sponsors
