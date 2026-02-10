@@ -5,13 +5,14 @@ import Image from "next/image";
 
 export default function TeamSection() {
   const teamMembers = [
-    { name: "Elina E.", position: "President / Founder", image: "/images/team/elina.jpeg" },
+    { name: "Edith Augustine", position: "President / Founder", image: "/images/team/elina.jpeg" },
     { name: "Anne Dirkling", position: "Vice President", image: "/images/team/anne.jpeg" },
     { name: "Yango Sor", position: " Secretary and Gender Expert", image: "/images/team/yango.jpeg" },
     { name: "Hassan Sufyan Abdullahi", position: "Finance / Project Manager ", image: "/images/team/hassan.jpeg" },
     { name: "Oluwatobi Precious Odunubi", position: "PR/ Media Manager", image: "/images/team/tobi.jpeg" },
     { name: "Oni Olajumoke", position: "IT Manager", image: "/images/team/jumoke.jpg" },
     { name: "Rahmah Idris", position: "MEAL Coordinator", image: "/images/team/rahmah.jpg" },
+    { name: "Regina Okoro", position: "Programs Officer", image: "/images/team/regina.jpg" },
   ];
 
  
