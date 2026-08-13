@@ -53,7 +53,7 @@ const Impact = () => {
         ref={sectionRef}
         className="relative bg-cover bg-center bg-no-repeat flex items-end  h-screen"
         style={{
-          backgroundImage: "url('/images/impact/impact.jpeg')",
+          backgroundImage: "url('/images/impact/impact.webp')",
         }}
       >
         {/* 🔹 Overlay that covers the entire section */}

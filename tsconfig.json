@@ -2,7 +2,8 @@
   "compilerOptions": {
       "baseUrl": "src",
     "paths": {
-      "@sanity/*": ["sanity/*"]
+      "@sanity/*": ["../node_modules/@sanity/*"],
+      "sanity/structure": ["../node_modules/sanity/lib/structure"]
     },
     "target": "ES2017",
     "lib": [
@@ -17,7 +18,7 @@
     "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",

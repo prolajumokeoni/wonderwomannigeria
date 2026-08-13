@@ -1,76 +1,57 @@
 "use client";
 
-import Image from "next/image"; 
+import Image from "next/image";
 
 export default function Partners() {
   const logos = [
-    "/images/partners/unicef.png",
-    "/images/partners/france.jpeg",
-    "/images/partners/german.jpeg",
-    "/images/partners/canada.jpeg",
-    "/images/partners/fmwa.jpeg",
-    "/images/partners/bouygues.jpeg",
-    "/images/partners/iom.jpeg",
-    "/images/partners/gac.jpeg",
-    "/images/partners/liberte.jpeg",
-    "/images/partners/plan.jpeg",
-    "/images/partners/sesci.jpeg",
-    "/images/partners/ad.jpeg",
-    "/images/partners/afrivan.jpeg",
-    "/images/partners/bf.png",
-    "/images/partners/drive.png",
-    "/images/partners/edu.png",
-    "/images/partners/msi.png",
-    "/images/partners/nhw.png",
-    "/images/partners/psi.jpg",
-    "/images/partners/sayp.jpeg",
-    "/images/partners/shak.png",
-    "/images/partners/swag.png",
-    "/images/partners/water.png",
+    "/images/partners/unicef.webp", "/images/partners/france.webp", "/images/partners/german.webp",
+    "/images/partners/canada.webp", "/images/partners/fmwa.webp", "/images/partners/bouygues.webp",
+    "/images/partners/iom.webp", "/images/partners/gac.webp", "/images/partners/liberte.webp",
+    "/images/partners/plan.webp", "/images/partners/sesci.webp", "/images/partners/ad.webp",
+    "/images/partners/afrivan.webp", "/images/partners/bf.webp", "/images/partners/drive.webp",
+    "/images/partners/edu.webp", "/images/partners/msi.webp", "/images/partners/nhw.webp",
+    "/images/partners/psi.webp", "/images/partners/sayp.webp", "/images/partners/shak.webp",
+    "/images/partners/swag.webp", "/images/partners/water.webp",
   ];
 
-
-         
   const doubledLogos = [...logos, ...logos];
 
   return (
-    <main className="bg-gray-50 py-12 px-4">
-      <div className=" mx-auto">
-        <header className="mb-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
-            Our Partners and Sponsors
-          </h1>
-          <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
+    <section className="bg-white dark:bg-black py-20 px-4 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-14">
+          <p className="text-[#3db94c] text-sm font-bold uppercase tracking-widest mb-3">Trusted By</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3">Our Partners and Sponsors</h2>
+          <div className="w-16 h-1 bg-[#3db94c] mx-auto rounded-full mb-4" />
+          <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
             We are proud to partner with organizations who support our mission.
           </p>
-        </header>
-
-        <div className="overflow-hidden p-10 mt-12">
-          <div className="flex gap-8 w-max animate-slide">
-              {doubledLogos.map((src, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-center bg-white rounded-lg flex-shrink-0n object-contain"
-                  style={{ width: 120, height: 100 }}
-                >
-                  <Image
-                    src={src}
-                    alt="Partner Logo"
-                    width={120}
-                    height={80}
-                    className="object-contain p-2"
-                  />
-                </div>
-              ))}
-            </div>
-
         </div>
 
-        {/* CTA */}
-        <div className="mt-8 text-center">
+        <div className="overflow-hidden carousel-fade-mask py-4">
+          <div className="flex gap-6 w-max animate-slide">
+            {doubledLogos.map((src, idx) => (
+              <div
+                key={idx}
+                className="flex items-center justify-center bg-gray-50 dark:bg-neutral-800 border border-gray-100 dark:border-neutral-700 rounded-xl flex-shrink-0 hover:border-[#3db94c]/30 hover:bg-green-50/30 dark:hover:bg-green-950/20 transition-all duration-300"
+                style={{ width: 130, height: 90 }}
+              >
+                <Image
+                  src={src}
+                  alt="Partner Logo"
+                  width={110}
+                  height={70}
+                  className="object-contain p-2 grayscale hover:grayscale-0 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
           <a
             href="#contact"
-            className="inline-block px-6 py-2 bg-[#3db94c] text-white font-semibold rounded-lg shadow hover:bg-green-600 transition"
+            className="inline-block px-8 py-3 bg-[#3db94c] text-white font-semibold rounded-lg shadow-md hover:bg-[#2fa33e] hover:shadow-lg hover:shadow-[#3db94c]/20 transition-all duration-300"
           >
             Become a Partner
           </a>
@@ -78,23 +59,10 @@ export default function Partners() {
       </div>
 
       <style>{`
-        @keyframes slide {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .animate-slide {
-          animation: slide 40s linear infinite;
-        }
-        
-        .animate-slide:hover {
-          animation-play-state: paused;
-        }
+        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-slide { animation: slide 45s linear infinite; }
+        .animate-slide:hover { animation-play-state: paused; }
       `}</style>
-    </main>
+    </section>
   );
 }

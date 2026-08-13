@@ -19,12 +19,12 @@ export default function ProjectsPage() {
       year: "Since 2022",
       tagline: "Turning waste into dignity",
       images: [
-        "/images/projects/pfp/pfp.jpeg",
-        "/images/projects/pfp/pfp2.jpeg",
-        "/images/projects/pfp/pfp3.jpeg",
-        "/images/projects/pfp/pfp4.jpeg",
-        "/images/projects/pfp/pfp5.jpeg",
-        "/images/projects/pfp/pfp6.jpeg",
+        "/images/projects/pfp/pfp.webp",
+        "/images/projects/pfp/pfp2.webp",
+        "/images/projects/pfp/pfp3.webp",
+        "/images/projects/pfp/pfp4.webp",
+        "/images/projects/pfp/pfp5.webp",
+        "/images/projects/pfp/pfp6.webp",
       ],
       description: "At Wonder Woman Nigeria, we believe that young girls and women should not be left alone to make these tough choices. They should be supported, empowered and allowed to have their menstrual periods in a safe, confident and dignified manner.",
       objectives: [
@@ -52,13 +52,13 @@ export default function ProjectsPage() {
       year: "Since 2020",
       tagline: "Protecting dignity, enabling futures",
       images: [
-        "/images/projects/lsp/lsp1.jpeg",
-        "/images/projects/lsp/lsp2.jpeg",
-        "/images/projects/lsp/lsp3.jpeg",
-        "/images/projects/lsp/lsp4.jpeg",
-        "/images/projects/lsp/lsp5.jpeg",
-        "/images/projects/lsp/lsp6.jpeg",
-        "/images/projects/lsp/lsp7.jpg",
+        "/images/projects/lsp/lsp1.webp",
+        "/images/projects/lsp/lsp2.webp",
+        "/images/projects/lsp/lsp3.webp",
+        "/images/projects/lsp/lsp4.webp",
+        "/images/projects/lsp/lsp5.webp",
+        "/images/projects/lsp/lsp6.webp",
+        "/images/projects/lsp/lsp7.webp",
       ],
       description: "Born from the mission to combat period poverty, The Little Sister Project provides comprehensive menstrual health support to vulnerable adolescent girls. Through individual donor support, we've adopted girls in target communities, ensuring they have consistent access to menstrual hygiene products and education.",
       objectives: [
@@ -84,13 +84,13 @@ export default function ProjectsPage() {
       year: "2025",
       tagline: "From grassroots advocacy to national policy",
       images: [
-        "/images/projects/nmhs/nmhs.jpeg",
-        "/images/projects/nmhs/nmhs1.jpeg",
-        "/images/projects/nmhs/nmhs2.jpeg",
-        "/images/projects/nmhs/nmhs3.jpeg",
-        "/images/projects/nmhs/nmhs4.jpeg",
-        "/images/projects/nmhs/nmhs5.jpeg",
-        "/images/projects/nmhs/nmhs6.jpeg",
+        "/images/projects/nmhs/nmhs.webp",
+        "/images/projects/nmhs/nmhs1.webp",
+        "/images/projects/nmhs/nmhs2.webp",
+        "/images/projects/nmhs/nmhs3.webp",
+        "/images/projects/nmhs/nmhs4.webp",
+        "/images/projects/nmhs/nmhs5.webp",
+        "/images/projects/nmhs/nmhs6.webp",
       ],
       description: "Wonder Woman Nigeria co-convened Nigeria's historic first National Menstrual Health and Hygiene Management Summit with the Federal Ministry of Women Affairs. This landmark event brought together policymakers, advocates, and stakeholders to address menstrual health as a national priority.",
       objectives: [
@@ -117,18 +117,18 @@ export default function ProjectsPage() {
       year: "Since 2019",
       tagline: "Breaking silence, building safety",
       images: [
-        "/images/projects/gbv/gbv.jpeg",
-        "/images/projects/gbv/gbv1.jpeg",
-        "/images/projects/gbv/gbv2.jpeg",
-        "/images/projects/gbv/gbv3.jpeg",
-        "/images/projects/gbv/gbvv4.jpeg",
-        "/images/projects/gbv/gbvv5.jpeg",
-        "/images/projects/gbv/gbvv6.jpeg",
-        "/images/projects/gbv/gbvv7.jpeg",
-        "/images/projects/gbv/gbvv8.jpeg",
-        "/images/projects/gbv/gbvv9.jpeg",
-        "/images/projects/gbv/gbvv10.jpeg",
-        "/images/projects/gbv/gbvv11.jpeg",
+        "/images/projects/gbv/gbv.webp",
+        "/images/projects/gbv/gbv1.webp",
+        "/images/projects/gbv/gbv2.webp",
+        "/images/projects/gbv/gbv3.webp",
+        "/images/projects/gbv/gbvv4.webp",
+        "/images/projects/gbv/gbvv5.webp",
+        "/images/projects/gbv/gbvv6.webp",
+        "/images/projects/gbv/gbvv7.webp",
+        "/images/projects/gbv/gbvv8.webp",
+        "/images/projects/gbv/gbvv9.webp",
+        "/images/projects/gbv/gbvv10.webp",
+        "/images/projects/gbv/gbvv11.webp",
       ],
       description: "Our GBV sensitization program engages entire communities in preventing and responding to gender-based violence. By working with traditional and religious leaders, women's groups, youth organizations, and schools, we're creating comprehensive support networks for survivors and shifting cultural norms.",
       objectives: [
@@ -155,10 +155,10 @@ export default function ProjectsPage() {
       year: "2021",
       tagline: "Childhood restored, futures protected",
       images: [
-        "/images/projects/cnb/cnb.jpg", 
-        "/images/projects/cnb/cnb3.jpg", 
-        "/images/projects/cnb/cnb4.jpg", 
-        "/images/projects/cnb/cnb5.jpg", 
+        "/images/projects/cnb/cnb.webp", 
+        "/images/projects/cnb/cnb3.webp", 
+        "/images/projects/cnb/cnb4.webp", 
+        "/images/projects/cnb/cnb5.webp", 
       ],
       description: "Addressing the critical issue of child marriage in Northern Nigeria, this campaign combines family counseling with community-wide awareness activities. We work directly with parents and families to demonstrate the importance of education and the devastating risks of early marriage.",
       objectives: [
@@ -185,12 +185,12 @@ export default function ProjectsPage() {
       year: "Since 2020",
       tagline: "Building literate, empowered communities",
       images: [
-        "/images/projects/lsp/lsp.jpeg",
-        "/images/projects/la/la.jpeg",
-        "/images/projects/la/la1.jpeg",
-        "/images/projects/la/la3.jpg",
-        "/images/projects/la/la5.jpg",
-        "/images/projects/la/la4.jpeg",
+        "/images/projects/lsp/lsp.webp",
+        "/images/projects/la/la.webp",
+        "/images/projects/la/la1.webp",
+        "/images/projects/la/la3.webp",
+        "/images/projects/la/la5.webp",
+        "/images/projects/la/la4.webp",
         
       ],
       description: "In partnership with Tanar Kaduna Education Consultancy, we're fostering literacy development and reading culture in underserved communities. Our comprehensive approach includes book donations, reading classes, competitions, and advocacy for public library rehabilitation.",
@@ -220,11 +220,11 @@ export default function ProjectsPage() {
       year: "Since 2021",
       tagline: "Clean communities, healthy futures",
       images: [
-        "/images/projects/rcu/rcu1.jpeg",
-        "/images/projects/rcu/rcu.jpeg",
-        "/images/projects/rcu/rcu2.jpeg",
-        "/images/projects/rcu/rcu4.png",
-        "/images/projects/rcu/rcu3.jpeg",
+        "/images/projects/rcu/rcu1.webp",
+        "/images/projects/rcu/rcu.webp",
+        "/images/projects/rcu/rcu2.webp",
+        "/images/projects/rcu/rcu4.webp",
+        "/images/projects/rcu/rcu3.webp",
       ],
       description: "Our regular clean-up drives mobilize communities to tackle plastic pollution while building environmental consciousness. These activities directly feed into our Plastics for Pads initiative, creating a closed loop where waste collection serves both environmental and social good.",
       objectives: [
@@ -252,26 +252,26 @@ export default function ProjectsPage() {
       year: "Since 2018",
       tagline: "Compassion in action since day one",
       images: [
-        "/images/projects/rak/rak11.jpeg", 
-        "/images/projects/rak/rak12.jpeg", 
-        "/images/projects/rak/rak15.jpeg", 
-        "/images/projects/rak/rak16.jpeg", 
-        "/images/projects/rak/rak14.jpeg", 
-        "/images/projects/rak/rak17.jpeg", 
-        "/images/projects/rak/rak18.jpeg", 
-        "/images/projects/rak/rak19.jpeg", 
-        "/images/projects/rak/rak21.jpeg", 
-        "/images/projects/rak/rak1.jpeg", 
-        "/images/projects/rak/rak3.jpeg", 
-        "/images/projects/rak/rak4.jpeg", 
-        "/images/projects/rak/rak5.jpeg", 
-        "/images/projects/rak/rak2.jpeg", 
-        "/images/projects/rak/rak6.jpeg", 
-        "/images/projects/rak/rak10.jpeg", 
-        "/images/projects/rak/rak7.jpeg", 
-        "/images/projects/rak/rak8.jpeg", 
-        "/images/projects/rak/rak9.jpeg", 
-        "/images/projects/rak/rak10.jpeg", 
+        "/images/projects/rak/rak11.webp", 
+        "/images/projects/rak/rak12.webp", 
+        "/images/projects/rak/rak15.webp", 
+        "/images/projects/rak/rak16.webp", 
+        "/images/projects/rak/rak14.webp", 
+        "/images/projects/rak/rak17.webp", 
+        "/images/projects/rak/rak18.webp", 
+        "/images/projects/rak/rak19.webp", 
+        "/images/projects/rak/rak21.webp", 
+        "/images/projects/rak/rak1.webp", 
+        "/images/projects/rak/rak3.webp", 
+        "/images/projects/rak/rak4.webp", 
+        "/images/projects/rak/rak5.webp", 
+        "/images/projects/rak/rak2.webp", 
+        "/images/projects/rak/rak6.webp", 
+        "/images/projects/rak/rak10.webp", 
+        "/images/projects/rak/rak7.webp", 
+        "/images/projects/rak/rak8.webp", 
+        "/images/projects/rak/rak9.webp", 
+        "/images/projects/rak/rak10.webp", 
       ],
       description: "Our founding program, Random Acts of Kindness represents WWN's core values of compassion and community engagement. Through periodic outreaches, we support street children, orphans, and IDP residents with essential supplies while serving as a visible contact point for GBV cases and community needs.",
       objectives: [
@@ -320,7 +320,7 @@ useEffect(() => {
 }, []);
     
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <Navbar />
       <Impact/>
       <ImpactHeader />
@@ -334,7 +334,7 @@ useEffect(() => {
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id
                   ? "bg-[#3db94c] text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-100 shadow"
+                  : "bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 shadow"
               }`}
             >
               {cat.name}
@@ -408,28 +408,28 @@ function ProjectCard({ project }) {
   };
 
   return (
-    <div id={`project-${project.id}`} className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <div id={`project-${project.id}`} className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg overflow-hidden transition-colors duration-300">
       {/* Header Section */}
       <div className="p-8 pb-6">
         <div className="flex items-start justify-between mb-4">
           <div>
             <div className="text-sm text-[#3db94c] font-semibold mb-1">{project.year}</div>
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">{project.title}</h2>
-            <p className="text-lg text-gray-600 italic">{project.tagline}</p>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">{project.title}</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 italic">{project.tagline}</p>
           </div>
         </div>
-        <p className="text-gray-700 leading-relaxed">
+        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
           {project.description}
         </p>
       </div>
 
       {/* Image Gallery Section - Drag to Scroll */}
-      <div className="relative px-8 py-6 bg-gray-50 group">
+      <div className="relative px-8 py-6 bg-gray-50 dark:bg-neutral-800 group transition-colors duration-300">
         {/* Left Arrow */}
         {showLeftArrow && (
           <button
             onClick={scrollToLeft}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/95 hover:bg-white p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/95 dark:bg-neutral-700/95 hover:bg-white dark:hover:bg-gray-600 p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
             aria-label="Scroll left"
           >
             <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -442,7 +442,7 @@ function ProjectCard({ project }) {
         {showRightArrow && (
           <button
             onClick={scrollToRight}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/95 hover:bg-white p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/95 dark:bg-neutral-700/95 hover:bg-white dark:hover:bg-gray-600 p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
             aria-label="Scroll right"
           >
             <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -466,6 +466,8 @@ function ProjectCard({ project }) {
           <img
             key={idx}
             src={img}
+            loading={idx === 0 ? "eager" : "lazy"}
+            decoding="async"
             className="inline-block w-64 h-48 rounded-lg object-cover mr-4"
           />
         ))}
@@ -480,7 +482,7 @@ function ProjectCard({ project }) {
         <div className="mb-6">
           <ul className="space-y-2">
             {project.objectives.map((objective, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-gray-700">
+              <li key={idx} className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
                 <span className="text-[#3db94c] mt-1 flex-shrink-0">✓</span>
                 <span>{objective}</span>
               </li>
@@ -489,17 +491,17 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Impact Stats */}
-        <div className="bg-[#3db94c]/5 rounded-lg p-5">
-          <h3 className="text-lg font-bold text-gray-800 mb-3">Impact Highlights:</h3>
+        <div className="bg-[#3db94c]/5 dark:bg-[#3db94c]/10 rounded-lg p-5">
+          <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3">Impact Highlights:</h3>
           <ul className="space-y-2 mb-4">
             {project.impact.stats.map((stat, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-gray-700">
+              <li key={idx} className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
                 <span className="text-[#3db94c] mt-1 flex-shrink-0">■</span>
                 <span className="font-medium">{stat}</span>
               </li>
             ))}
           </ul>
-          <p className="text-gray-600 italic border-l-4 border-[#3db94c] pl-4">
+          <p className="text-gray-600 dark:text-gray-400 italic border-l-4 border-[#3db94c] pl-4">
             {project.impact.story}
           </p>
         </div>
