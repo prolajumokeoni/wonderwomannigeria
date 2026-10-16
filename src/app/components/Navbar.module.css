@@ -1,0 +1,560 @@
+/* The navigation, ported from the Sotel site's "Morph" design: over the hero it is a wide,
+   clear bar in white; once the page scrolls it draws in to a frosted pill. On pages without
+   a hero (blog, media) it is always the pill. */
+.header {
+  position: fixed;
+  top: 24px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding-inline: 16px;
+  pointer-events: none;
+  transition: background-color 200ms ease;
+}
+/* while the menu is open the header covers the screen and takes taps itself, so the menu
+   panel lies inside a box that receives them (on iOS a child hanging outside a fixed,
+   pointer-events: none parent can miss its taps); a tap on the dimmed page closes it */
+.header[data-menu-open] {
+  top: 0;
+  bottom: 0;
+  align-items: flex-start;
+  padding-top: 24px;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.bar {
+  pointer-events: auto;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+  height: 64px;
+  padding: 0 6px 0 14px;
+  border-radius: 16px;
+  color: #141414;
+  transition:
+    max-width 620ms var(--ease-out-quint),
+    height 620ms var(--ease-out-quint),
+    padding 620ms var(--ease-out-quint),
+    color 300ms ease;
+}
+/* the frost lives on a layer of its own so it can fade without touching the content */
+.bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  /* on a white page a white pill has no edge: a faint green tint, a hairline and a
+     deeper shadow keep it standing apart from what scrolls under it */
+  background: rgba(244, 250, 245, 0.86);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  backdrop-filter: blur(18px) saturate(1.6);
+  box-shadow:
+    inset 0 0 0 1px rgba(47, 156, 61, 0.14),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 10px 30px rgba(16, 40, 20, 0.12);
+  transition: opacity 320ms ease;
+}
+:global(.dark) .bar {
+  color: #fff;
+}
+:global(.dark) .bar::before {
+  background: rgba(24, 24, 24, 0.66);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* logo: always in its own colours; on dark ground (the hero, dark mode) a thin white
+   edge keeps the black silhouette from sinking into the background */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  line-height: 0;
+}
+.logo {
+  width: auto;
+  height: 50px;
+  transition:
+    height 620ms var(--ease-out-quint),
+    filter 300ms ease;
+}
+:global(.dark) .logo {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.95));
+}
+
+/* the links, centred on the bar */
+.inline {
+  display: none;
+}
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 15px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0.8;
+  transition:
+    color 200ms ease,
+    opacity 200ms ease;
+}
+.link:hover,
+.link[data-active] {
+  opacity: 1;
+}
+/* the current page reads in the brand green on the pill */
+.link[data-active] {
+  color: #1f7a2c;
+}
+:global(.dark) .link[data-active] {
+  color: #7ee08a;
+}
+
+/* the current page: its own plate, which stays put */
+.link[data-active]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 12px;
+  background: rgba(61, 185, 76, 0.2);
+}
+:global(.dark) .link[data-active]::before {
+  background: rgba(61, 185, 76, 0.3);
+}
+
+/* the hover glass, in a light green. At rest it is the bar's background: it fills the
+   whole bar, so the bar shows in that green. On a hovered link the green gathers in to
+   that link and the bar behind it shows its own colour; when the pointer leaves, the
+   green eases back out until it fills the bar again. The current page keeps its own,
+   deeper green plate on top. */
+.glass {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  border-radius: 12px;
+  pointer-events: none;
+  background: rgba(61, 185, 76, 0.12);
+}
+.glass[data-full] {
+  border-radius: 16px;
+}
+.glass[data-ready] {
+  transition:
+    transform 380ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    width 380ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    height 350ms cubic-bezier(0.34, 1.4, 0.64, 1),
+    border-radius 380ms var(--ease-out-quint),
+    background-color 300ms ease,
+    opacity 200ms ease-out;
+}
+/* leaving: a slower, smooth ease back out to the full bar, with no overshoot */
+.glass[data-ready][data-full] {
+  transition:
+    transform 750ms var(--ease-out-quint),
+    width 750ms var(--ease-out-quint),
+    height 750ms var(--ease-out-quint),
+    border-radius 750ms var(--ease-out-quint),
+    background-color 300ms ease,
+    opacity 600ms var(--ease-out);
+}
+:global(.dark) .glass {
+  background: rgba(61, 185, 76, 0.16);
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: none;
+}
+.iconButton {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: inherit;
+  transition:
+    background-color 160ms ease,
+    transform 120ms var(--ease-out);
+}
+.iconButton:active {
+  transform: scale(0.94);
+}
+/* the sun and the moon turn over each other */
+.themeIcon {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  transition:
+    transform 500ms var(--ease-spring),
+    opacity 200ms ease;
+}
+.themeIcon[data-hidden] {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.cta {
+  display: none;
+  align-items: center;
+  gap: 0.28em;
+  height: 40px;
+  padding: 0 18px;
+  margin-left: 4px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition:
+    transform 120ms var(--ease-out),
+    background-color 160ms ease,
+    color 160ms ease,
+    height 620ms var(--ease-out-quint),
+    padding 620ms var(--ease-out-quint);
+}
+.cta span {
+  display: none;
+}
+.cta:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .iconButton:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  :global(.dark) .iconButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .cta:hover {
+    background: #2fa33e;
+  }
+}
+
+/* burger: three lines that become a cross */
+.burger {
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  box-shadow:
+    0 -5px 0 currentColor,
+    0 5px 0 currentColor;
+  transition:
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+}
+.iconButton[data-open] .burger {
+  background: transparent;
+  box-shadow: none;
+}
+.iconButton[data-open] .burger::before,
+.iconButton[data-open] .burger::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 21px;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+.iconButton[data-open] .burger::after {
+  transform: rotate(-45deg);
+}
+
+/* the menu: a second pill, in the bar's own frosted green-white, grows out from under the
+   first and springs into place, the links rising in one after another */
+.menuPanel {
+  position: absolute;
+  top: calc(100% + 10px);
+  /* the full width of the screen: the bar is centred, so this lines up edge to edge */
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 20px;
+  background: rgba(244, 250, 245, 0.94);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  backdrop-filter: blur(18px) saturate(1.6);
+  box-shadow:
+    inset 0 0 0 1px rgba(47, 156, 61, 0.14),
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 18px 40px rgba(16, 40, 20, 0.16);
+  color: #141414;
+  text-shadow: none;
+  transform-origin: 50% 0;
+  animation:
+    menuGrow 520ms var(--ease-spring) both,
+    menuFade 160ms ease-out both;
+}
+:global(.dark) .menuPanel {
+  background: rgba(24, 24, 24, 0.9);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 18px 40px rgba(0, 0, 0, 0.45);
+  color: #fff;
+}
+.menuPanel[data-state="closing"] {
+  animation:
+    menuShrink 200ms var(--ease-out) both,
+    menuFadeOut 160ms ease-in both;
+  pointer-events: none;
+}
+.menuLink {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 54px;
+  padding: 0 18px;
+  border-radius: 14px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  animation: linkIn 360ms var(--ease-spring) both;
+  animation-delay: calc(120ms + var(--i, 0) * 40ms);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+.menuLink[data-active] {
+  background: rgba(61, 185, 76, 0.2);
+  color: #1f7a2c;
+}
+:global(.dark) .menuLink[data-active] {
+  background: rgba(61, 185, 76, 0.3);
+  color: #7ee08a;
+}
+.menuLink:active {
+  background: rgba(61, 185, 76, 0.16);
+}
+.menuCta {
+  justify-content: center;
+  margin-top: 4px;
+  background: var(--brand);
+  color: #fff;
+}
+.menuPanel[data-state="closing"] .menuLink {
+  animation: linkOut 110ms ease both;
+}
+@media (hover: hover) and (pointer: fine) {
+  .menuLink:not(.menuCta):not([data-active]):hover {
+    background: rgba(61, 185, 76, 0.12);
+  }
+  :global(.dark) .menuLink:not(.menuCta):not([data-active]):hover {
+    background: rgba(61, 185, 76, 0.16);
+  }
+}
+
+@keyframes menuGrow {
+  from {
+    transform: translateY(-10px) scale(0.72, 0.55);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes menuFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes menuShrink {
+  to {
+    transform: translateY(-6px) scale(0.9, 0.8);
+  }
+}
+@keyframes menuFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes linkIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes linkOut {
+  to {
+    opacity: 0;
+  }
+}
+
+/* desktop: the links sit on the bar and the burger goes */
+@media (min-width: 900px) {
+  .inline {
+    position: absolute;
+    isolation: isolate;
+    left: 50%;
+    translate: -50% 0;
+    display: flex;
+    gap: 2px;
+  }
+  .cta {
+    display: inline-flex;
+  }
+  .menuButton {
+    display: none;
+  }
+}
+
+/* at the top of the hero: clear, wide and white */
+.header[data-over-hero]:not([data-scrolled]) .bar {
+  max-width: 1320px;
+  height: 88px;
+  padding: 0;
+  color: #fff;
+}
+.header[data-over-hero]:not([data-scrolled]) .bar::before {
+  opacity: 0;
+}
+.header[data-over-hero]:not([data-scrolled]) .logo {
+  height: 80px;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.95)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.95));
+}
+.header[data-over-hero]:not([data-scrolled]) .link {
+  opacity: 0.88;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+}
+.header[data-over-hero]:not([data-scrolled]) .link[data-active] {
+  opacity: 1;
+  color: #fff;
+}
+.header[data-over-hero]:not([data-scrolled]) .link[data-active]::before {
+  background: rgba(61, 185, 76, 0.55);
+}
+.header[data-over-hero]:not([data-scrolled]) .glass {
+  background: rgba(150, 230, 160, 0.2);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+/* at the top of the hero the bar stays clear: the green shows only on a hovered link, and
+   fades away as it eases back out */
+.header[data-over-hero]:not([data-scrolled]) .glass[data-full] {
+  opacity: 0;
+}
+.header[data-over-hero]:not([data-scrolled]) .cta {
+  height: 44px;
+  padding: 0 22px;
+  background: #fff;
+  color: #000;
+}
+.header[data-over-hero]:not([data-scrolled]) .cta span {
+  display: inline;
+}
+@media (min-width: 900px) {
+  .header[data-over-hero]:not([data-scrolled]) .inline {
+    gap: 8px;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .header[data-over-hero]:not([data-scrolled]) .iconButton:hover {
+    background: rgba(255, 255, 255, 0.16);
+  }
+  .header[data-over-hero]:not([data-scrolled]) .cta:hover {
+    background: #f2f2f2;
+  }
+}
+/* between 900 and 1100px the full button would crowd the last link: it just says Donate */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .header[data-over-hero]:not([data-scrolled]) .cta span {
+    display: none;
+  }
+  .header[data-over-hero]:not([data-scrolled]) .inline {
+    gap: 2px;
+  }
+}
+
+/* the opening: the bar drops in from above as the page arrives */
+.bar {
+  animation: pillDrop 900ms var(--ease-out-quint) 150ms both;
+}
+@keyframes pillDrop {
+  from {
+    transform: translateY(-96px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    top: 12px;
+    padding-inline: 12px;
+  }
+  .header[data-menu-open] {
+    top: 0;
+    padding-top: 12px;
+  }
+  .header[data-over-hero]:not([data-scrolled]) .bar {
+    padding: 0 4px;
+  }
+  .header[data-over-hero]:not([data-scrolled]) .bar {
+    height: 72px;
+  }
+  .header[data-over-hero]:not([data-scrolled]) .logo {
+    height: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass[data-ready],
+  .glass[data-ready][data-full] {
+    transition: opacity 200ms ease;
+  }
+  .bar,
+  .bar::before,
+  .logo,
+  .cta {
+    transition: none;
+    animation: none;
+  }
+  .menuPanel {
+    animation: menuFade 160ms ease both;
+  }
+  .menuPanel[data-state="closing"] {
+    animation: menuFadeOut 120ms ease both;
+  }
+  .menuLink,
+  .menuPanel[data-state="closing"] .menuLink {
+    animation: none;
+  }
+}

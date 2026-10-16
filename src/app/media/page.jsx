@@ -164,7 +164,7 @@ export default function WonderwomanMedia() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
 
         {/* ── Video Coverage ── */}
-        <h2 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-8 border-b border-gray-100 dark:border-neutral-800 pb-4">
+        <h2 className="t-h3 text-gray-900 dark:text-white mb-8 pb-4 border-b border-gray-200 dark:border-neutral-800">
           Video Coverage
         </h2>
 
@@ -243,7 +243,7 @@ export default function WonderwomanMedia() {
         </div>
 
         {/* ── Press & Articles ── */}
-        <h2 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-8 border-b border-gray-100 dark:border-neutral-800 pb-4">
+        <h2 className="t-h3 text-gray-900 dark:text-white mb-8 pb-4 border-b border-gray-200 dark:border-neutral-800">
           Press &amp; Articles
         </h2>
 
@@ -254,24 +254,21 @@ export default function WonderwomanMedia() {
               href={article.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col rounded-2xl overflow-hidden border border-gray-100 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="group flex flex-col rounded-2xl bg-white dark:bg-neutral-900 ring-1 ring-gray-200 dark:ring-neutral-800 hover:ring-[#3db94c]/50 transition-[box-shadow] duration-300 p-6"
             >
-              <div className="p-5 bg-[#3db94c]">
-                <span className="text-xs text-white/80 font-bold uppercase tracking-widest">
-                  {article.category}
-                </span>
-                <h3 className="text-base font-bold text-white mt-1 leading-snug line-clamp-3">
-                  {article.title}
-                </h3>
-              </div>
-              <div className="flex flex-col flex-grow p-5">
-                <p className="text-xs text-gray-400 mb-2">{article.source} · {article.date}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3 flex-grow">
+              {/* green stays an accent: the category label and the link, not a block of colour */}
+              <span className="t-eyebrow text-sm mb-2">{article.category}</span>
+              <h3 className="t-h3 !text-[1.125rem] text-gray-900 dark:text-white line-clamp-3 mb-3 group-hover:text-[#2f9c3d] dark:group-hover:text-[#5fd36d] transition-colors duration-300">
+                {article.title}
+              </h3>
+              <div className="flex flex-col flex-grow">
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{article.source} · {article.date}</p>
+                <p className="text-[0.9375rem] text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
                   {article.excerpt}
                 </p>
-                <div className="mt-4 pt-4 border-t border-gray-100 dark:border-neutral-700 flex items-center text-sm font-semibold text-[#3db94c]">
+                <div className="mt-auto pt-5 flex items-center text-[0.9375rem] font-semibold text-[#2f9c3d] dark:text-[#5fd36d]">
                   Read article
-                  <svg className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="ml-1.5 h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </div>

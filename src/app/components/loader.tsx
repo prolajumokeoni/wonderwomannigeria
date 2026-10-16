@@ -5,7 +5,7 @@ export default function Loading() {
       <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white">
         <div className="relative">
           <Image 
-            src="/images/logo.webp"
+            src="/images/WonderWomanNigeria.webp"
             alt="Wonder Woman Nigeria" 
             className="w-24 h-24 md:w-32 md:h-32 object-contain animate-pulse"
           />

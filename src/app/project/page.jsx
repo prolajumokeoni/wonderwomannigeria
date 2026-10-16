@@ -5,8 +5,19 @@ import Navbar from "../components/Navbar"
 import { useState, useEffect, } from "react";
 import Account from "../components/Account";
 import Footer from "../components/Footer"
+import ProjectGallery from "../components/ProjectGallery";
+import { Check } from "lucide-react";
 
-const ImpactHeader = () => <div className="bg-[#3db94c] text-white py-12 text-center"><h2 className="text-3xl font-bold">Our Projects</h2><p className="mt-2">Making a difference across Nigeria</p></div>;
+const ImpactHeader = () => (
+  <div className="pt-20 pb-6 text-center">
+    <div className="max-w-3xl mx-auto px-4">
+      <p className="t-eyebrow mb-3">Our Projects</p>
+      <h2 className="t-h2 text-gray-900 dark:text-white">
+        Making a difference <span className="text-[#3db94c]">across Nigeria</span>
+      </h2>
+    </div>
+  </div>
+);
 
 export default function ProjectsPage() {
   const [activeTab, setActiveTab] = useState("all");
@@ -325,7 +336,7 @@ useEffect(() => {
       <Impact/>
       <ImpactHeader />
 
-      <section className="max-w-7xl mx-auto px-4 py-12">
+      <section className="max-w-7xl mx-auto px-4 pt-6 pb-12">
         <div className="flex flex-wrap gap-3 justify-center mb-12">
           {categories.map((cat) => (
             <button
@@ -333,8 +344,8 @@ useEffect(() => {
               onClick={() => setActiveTab(cat.id)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeTab === cat.id
-                  ? "bg-[#3db94c] text-white shadow-lg"
-                  : "bg-white dark:bg-neutral-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 shadow"
+                  ? "bg-[#3db94c] text-white border border-[#3db94c] shadow-lg shadow-[#3db94c]/30"
+                  : "bg-white dark:bg-neutral-900 text-gray-700 dark:text-gray-300 border border-[#3db94c]/25 hover:border-[#3db94c] hover:bg-[#3db94c]/5 hover:text-[#2f9c3d] dark:hover:text-[#5fd36d]"
               }`}
             >
               {cat.name}
@@ -355,157 +366,67 @@ useEffect(() => {
   );
 }
 
+// "Title – details" and "Label: value" lines read better split in two; anything else stays whole
+function splitLead(text, separators, maxLead) {
+  for (const sep of separators) {
+    const i = text.indexOf(sep);
+    if (i > 0 && i <= maxLead) return [text.slice(0, i).trim(), text.slice(i + sep.length).trim()];
+  }
+  return [null, text.trim()];
+}
+
 function ProjectCard({ project }) {
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
-  const scrollContainerRef = useState(null);
-
-  const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - e.currentTarget.offsetLeft);
-    setScrollLeft(e.currentTarget.scrollLeft);
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - e.currentTarget.offsetLeft;
-    const walk = (x - startX) * 2;
-    e.currentTarget.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleScroll = (e) => {
-    const container = e.currentTarget;
-    setShowLeftArrow(container.scrollLeft > 0);
-    setShowRightArrow(
-      container.scrollLeft < container.scrollWidth - container.clientWidth - 10
-    );
-  };
-
-  const scrollToLeft = () => {
-    const container = document.getElementById(`scroll-${project.id}`);
-    if (container) {
-      container.scrollBy({ left: -280, behavior: 'smooth' });
-    }
-  };
-
-  const scrollToRight = () => {
-    const container = document.getElementById(`scroll-${project.id}`);
-    if (container) {
-      container.scrollBy({ left: 280, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div id={`project-${project.id}`} className="bg-white dark:bg-neutral-900 rounded-xl shadow-lg overflow-hidden transition-colors duration-300">
-      {/* Header Section */}
-      <div className="p-8 pb-6">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <div className="text-sm text-[#3db94c] font-semibold mb-1">{project.year}</div>
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">{project.title}</h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 italic">{project.tagline}</p>
-          </div>
+    <article id={`project-${project.id}`} className="scroll-mt-28 bg-white dark:bg-neutral-900 rounded-2xl border border-gray-200 dark:border-neutral-800 overflow-hidden transition-colors duration-300">
+      <header className="p-8 md:p-10 grid lg:grid-cols-[1fr_1.35fr] gap-6 lg:gap-14 items-end">
+        <div>
+          <p className="t-eyebrow mb-2">{project.year}</p>
+          <h2 className="text-[1.75rem] md:text-[2rem] leading-tight font-bold tracking-[-0.02em] text-gray-900 dark:text-white">{project.title}</h2>
+          <p className="mt-3 t-lead text-gray-500 dark:text-gray-400">{project.tagline}</p>
         </div>
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-          {project.description}
-        </p>
-      </div>
+        <p className="t-lead text-gray-700 dark:text-gray-300">{project.description}</p>
+      </header>
 
-      {/* Image Gallery Section - Drag to Scroll */}
-      <div className="relative px-8 py-6 bg-gray-50 dark:bg-neutral-800 group transition-colors duration-300">
-        {/* Left Arrow */}
-        {showLeftArrow && (
-          <button
-            onClick={scrollToLeft}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/95 dark:bg-neutral-700/95 hover:bg-white dark:hover:bg-gray-600 p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
-            aria-label="Scroll left"
-          >
-            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-        )}
+      <ProjectGallery images={project.images} title={project.title} />
 
-        {/* Right Arrow */}
-        {showRightArrow && (
-          <button
-            onClick={scrollToRight}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/95 dark:bg-neutral-700/95 hover:bg-white dark:hover:bg-gray-600 p-3 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100"
-            aria-label="Scroll right"
-          >
-            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        )}
-
-    
-    
-      <div
-        id={`scroll-${project.id}`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-        onScroll={handleScroll}
-        className="overflow-x-auto overflow-y-hidden custom-scrollbar whitespace-nowrap cursor-grab pb-3"
-      >
-        {project.images.map((img, idx) => (
-          <img
-            key={idx}
-            src={img}
-            loading={idx === 0 ? "eager" : "lazy"}
-            decoding="async"
-            className="inline-block w-64 h-48 rounded-lg object-cover mr-4"
-          />
-        ))}
-      </div>
-
-
-      </div>
-
-      {/* Content Section */}
-      <div className="p-8 pt-6">
-        {/* Objectives */}
-        <div className="mb-6">
-          <ul className="space-y-2">
-            {project.objectives.map((objective, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                <span className="text-[#3db94c] mt-1 flex-shrink-0">✓</span>
-                <span>{objective}</span>
-              </li>
-            ))}
+      <div className="p-8 md:p-10 grid lg:grid-cols-[1.35fr_1fr] gap-10 lg:gap-14">
+        <section>
+          <ul className="divide-y divide-gray-100 dark:divide-neutral-800">
+            {project.objectives.map((objective, idx) => {
+              const [lead, rest] = splitLead(objective, [" – ", " - ", ": "], 70);
+              return (
+                <li key={idx} className="flex gap-4 py-4">
+                  <span className="mt-0.5 grid place-items-center flex-none w-6 h-6 rounded-full bg-[#3db94c]/12 text-[#2f9c3d] dark:text-[#5fd36d]">
+                    <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                  </span>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {lead && <span className="block font-semibold text-gray-900 dark:text-white mb-0.5">{lead}</span>}
+                    {rest}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
-        </div>
+        </section>
 
-        {/* Impact Stats */}
-        <div className="bg-[#3db94c]/5 dark:bg-[#3db94c]/10 rounded-lg p-5">
-          <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3">Impact Highlights:</h3>
-          <ul className="space-y-2 mb-4">
-            {project.impact.stats.map((stat, idx) => (
-              <li key={idx} className="flex items-start gap-2 text-gray-700 dark:text-gray-300">
-                <span className="text-[#3db94c] mt-1 flex-shrink-0">■</span>
-                <span className="font-medium">{stat}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="text-gray-600 dark:text-gray-400 italic border-l-4 border-[#3db94c] pl-4">
+        <aside className="self-start rounded-2xl bg-[#f3faf4] dark:bg-neutral-800/60 p-6 md:p-8">
+          <h3 className="t-h3 text-gray-900 dark:text-white mb-5">Impact Highlights:</h3>
+          <dl className="space-y-4">
+            {project.impact.stats.map((stat, idx) => {
+              const [label, value] = splitLead(stat, [": ", " – "], 40);
+              return (
+                <div key={idx}>
+                  {label && <dt className="text-sm font-semibold text-[#2f9c3d] dark:text-[#5fd36d]">{label}</dt>}
+                  <dd className="text-gray-800 dark:text-gray-200 leading-relaxed">{value}</dd>
+                </div>
+              );
+            })}
+          </dl>
+          <p className="mt-6 pt-6 border-t border-[#3db94c]/20 text-gray-700 dark:text-gray-300 leading-relaxed">
             {project.impact.story}
           </p>
-        </div>
+        </aside>
       </div>
-    </div>
+    </article>
   );
 }
