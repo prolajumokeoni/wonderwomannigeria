@@ -99,8 +99,8 @@ export default async function PostPage({ params }: Params) {
 
         {postImageUrl && (
           <figure className="max-w-5xl mx-auto px-6 mt-10 lg:mt-12">
-            <div className="rounded-2xl overflow-hidden bg-gray-100 dark:bg-neutral-800 ring-1 ring-black/5 dark:ring-white/10">
-              <img src={postImageUrl} alt={post.title} className="w-full max-h-[70vh] object-cover" />
+            <div className="w-fit mx-auto rounded-2xl overflow-hidden bg-gray-100 dark:bg-neutral-800 ring-1 ring-black/5 dark:ring-white/10">
+              <img src={postImageUrl} alt={post.title} className="block max-w-full max-h-[70vh] object-contain" />
             </div>
           </figure>
         )}
