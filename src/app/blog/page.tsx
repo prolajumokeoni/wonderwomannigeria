@@ -61,9 +61,9 @@ export default async function Blog() {
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 dark:bg-neutral-800">
                   {featured.image ? (
                     <img
-                      src={urlFor(featured.image).width(1200).height(750).url()}
+                      src={urlFor(featured.image).width(1200).url()}
                       alt={featured.title}
-                      className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
+                      className="w-full h-full object-contain transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
                     />
                   ) : (
                     <div className="w-full h-full bg-white/60 dark:bg-[#0c1a0f]" />
